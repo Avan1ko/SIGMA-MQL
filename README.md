@@ -43,12 +43,16 @@ python train.py
 ## Citation
 If you use this work in your research, please cite:
 ```bibtex
-@article{liao2025sigma,
-  title={SIGMA: Sheaf-Informed Geometric Multi-Agent Pathfinding},
+@INPROCEEDINGS{11127434,
   author={Liao, Shuhao and Xia, Weihang and Cao, Yuhong and Dai, Weiheng and He, Chengyang and Wu, Wenjun and Sartoretti, Guillaume},
-  journal={arXiv preprint arXiv:2502.06440},
-  year={2025}
-}
+  booktitle={2025 IEEE International Conference on Robotics and Automation (ICRA)}, 
+  title={SIGMA: Sheaf-Informed Geometric Multi-Agent Pathfinding}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-7},
+  keywords={Neural networks;Decision making;Transportation;Self-supervised learning;Deep reinforcement learning;Loss measurement;Mathematical models;Collision avoidance;Robots;Logistics},
+  doi={10.1109/ICRA55743.2025.11127434}}
 ```
 
 ## Authors
