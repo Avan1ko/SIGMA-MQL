@@ -35,7 +35,7 @@ target_network_update_freq=2000
 save_path='./models'
 max_episode_length = 512
 seq_len = 16
-load_model = True
+load_model = False
 load_path = './models/save_model/model_house/84000_house.pth'
 
 Advantage_all = True
@@ -60,9 +60,9 @@ prioritized_replay_alpha=0.6
 prioritized_replay_beta=0.4
 
 # curriculum learning
-init_env_settings = (3, 10)
+init_env_settings = (3, 10) # num_agents, map_length
 max_num_agents = 5
-max_map_lenght = 40
+max_map_length = 40
 pass_rate = 0.9
 # dqn network setting
 cnn_channel = 128

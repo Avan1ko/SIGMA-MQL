@@ -9,7 +9,7 @@ import torch
 import torch.nn as nn
 from torch.optim import Adam
 from torch.optim.lr_scheduler import MultiStepLR
-from torch.cuda.amp import GradScaler
+from torch.amp import GradScaler
 import numpy as np
 from model import Network
 from environment import Environment
@@ -38,13 +38,13 @@ class GlobalBuffer:
         self.lock = threading.Lock()
         self.env_settings_set = ray.put([init_env_settings])
 
-        self.obs_buf = np.zeros(((local_buffer_capacity+1)*episode_capacity, configs.max_num_agents, *configs.obs_shape), dtype=np.bool)
+        self.obs_buf = np.zeros(((local_buffer_capacity+1)*episode_capacity, configs.max_num_agents, *configs.obs_shape), dtype=np.bool_)
         self.act_buf = np.zeros((local_buffer_capacity*episode_capacity), dtype=np.uint8)
         self.rew_buf = np.zeros((local_buffer_capacity*episode_capacity), dtype=np.float16)
         self.hid_buf = np.zeros((local_buffer_capacity*episode_capacity, configs.max_num_agents, configs.hidden_dim), dtype=np.float16)
-        self.done_buf = np.zeros(episode_capacity, dtype=np.bool)
+        self.done_buf = np.zeros(episode_capacity, dtype=np.bool_)
         self.size_buf = np.zeros(episode_capacity, dtype=np.uint)
-        self.comm_mask_buf = np.zeros(((local_buffer_capacity+1)*episode_capacity, configs.max_num_agents, configs.max_num_agents), dtype=np.bool)
+        self.comm_mask_buf = np.zeros(((local_buffer_capacity+1)*episode_capacity, configs.max_num_agents, configs.max_num_agents), dtype=np.bool_)
 
 
     def __len__(self):
@@ -77,14 +77,13 @@ class GlobalBuffer:
         '''
         data: actor_id 0, num_agents 1, map_len 2, obs_buf 3, act_buf 4, rew_buf 5, hid_buf 6, td_errors 7, done 8, size 9, comm_mask 10
         '''
-        if data[0] >= 12:
-            stat_key = (data[1], data[2])
+        # Record stats from all actors (removed >= 10 condition to track all episodes)
+        stat_key = (data[1], data[2])
 
-            if stat_key in self.stat_dict:
-
-                self.stat_dict[stat_key].append(data[8])
-                if len(self.stat_dict[stat_key]) == 201:
-                    self.stat_dict[stat_key].pop(0)
+        if stat_key in self.stat_dict:
+            self.stat_dict[stat_key].append(data[8])
+            if len(self.stat_dict[stat_key]) == 201:
+                self.stat_dict[stat_key].pop(0)
 
         with self.lock:
 
@@ -208,13 +207,13 @@ class GlobalBuffer:
         print('buffer size: {}'.format(self.size))
 
         print('  ', end='')
-        for i in range(configs.init_env_settings[1], configs.max_map_lenght+1, 5):
+        for i in range(configs.init_env_settings[1], configs.max_map_length+1, 5):
             print('   {:2d}   '.format(i), end='')
         print()
 
         for num_agents in range(configs.init_env_settings[0], configs.max_num_agents+1):
             print('{:2d}'.format(num_agents), end='')
-            for map_len in range(configs.init_env_settings[1], configs.max_map_lenght+1, 5):
+            for map_len in range(configs.init_env_settings[1], configs.max_map_length+1, 5):
                 if (num_agents, map_len) in self.stat_dict:
                     print('{:4d}/{:<3d}'.format(sum(self.stat_dict[(num_agents, map_len)]), len(self.stat_dict[(num_agents, map_len)])), end='')
                 else:
@@ -229,7 +228,7 @@ class GlobalBuffer:
                 if add_agent_key[0] <= configs.max_num_agents and add_agent_key not in self.stat_dict:
                     self.stat_dict[add_agent_key] = []
                 
-                if key[1] < configs.max_map_lenght:
+                if key[1] < configs.max_map_length:
                     add_map_key = (key[0], key[1]+5) 
                     if add_map_key not in self.stat_dict:
                         self.stat_dict[add_map_key] = []
@@ -248,12 +247,11 @@ class GlobalBuffer:
         return self.env_settings_set
 
     def check_done(self):
-
-        for i in range(configs.max_num_agents):
-            if (i+1, configs.max_map_lenght) not in self.stat_dict:
+        for i in range(configs.init_env_settings[0], configs.max_num_agents+1):
+            if (i, configs.max_map_length) not in self.stat_dict:
                 return False
         
-            l = self.stat_dict[(i+1, configs.max_map_lenght)]
+            l = self.stat_dict[(i, configs.max_map_length)]
             
             if len(l) < 200:
                 return False

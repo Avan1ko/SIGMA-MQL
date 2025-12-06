@@ -2,9 +2,11 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn.utils.rnn import pack_padded_sequence
-from torch.cuda.amp import autocast
+from torch.amp import autocast
 import configs
 import wandb
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 class ResBlock(nn.Module):
     def __init__(self, channel):
@@ -56,7 +58,7 @@ class MultiHeadAttention(nn.Module):
         assert attn_mask.size() == (batch_size, self.num_heads, num_agents, num_agents)
 
         # context: [batch_size x num_heads x num_agents x output_dim]
-        with autocast(enabled=False):
+        with autocast(device_type=device.type, enabled=False):
             scores = torch.matmul(q_s.float(), k_s.float().transpose(-1, -2)) / (self.output_dim**0.5) # scores : [batch_size x n_heads x num_agents x num_agents]
             scores.masked_fill_(attn_mask, -1e9) # Fills elements of self tensor with value where mask is one.
             attn = F.softmax(scores, dim=-1)
@@ -329,7 +331,7 @@ class Network(nn.Module):
     def reset(self):
         self.hidden = None
 
-    @autocast()
+    @autocast(device_type=device.type)
     def forward(self, obs, steps, hidden, comm_mask):
         # comm_mask shape: batch_size x seq_len x max_num_agents x max_num_agents
         max_steps = obs.size(1)
@@ -412,7 +414,7 @@ class Network(nn.Module):
         state_val = self.state(hidden)
 
         sheaf_section_loss = sheaf_section_loss[:, 0]
-        sheaf_section_loss = sheaf_section_loss.unsqueeze(1).to(torch.device("cuda"))
+        sheaf_section_loss = sheaf_section_loss.unsqueeze(1).to(device)
         # wandb.log({"sheaf_section_loss": sheaf_section_loss})
         if configs.Sec_cons:
             q_val = state_val - self.lambdas * sheaf_section_loss + adv_val - adv_val.mean(1, keepdim=True)

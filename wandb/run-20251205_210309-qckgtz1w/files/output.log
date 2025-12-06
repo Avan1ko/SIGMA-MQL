@@ -1,0 +1,1496 @@
+2025-12-05 21:03:12,006	INFO worker.py:2023 -- Started a local Ray instance.
+/opt/pytorch/lib/python3.12/site-packages/ray/_private/worker.py:2062: FutureWarning: Tip: In future versions of Ray, Ray will no longer override accelerator visible devices env var if num_gpus=0 or num_gpus=None (default). To enable this behavior and turn off this error message, set RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO=0
+  warnings.warn(
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 198.2/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 991
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 0
+[36m(Learner pid=12743)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 481.8/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 3400
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 0
+[36m(Learner pid=12743)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 506.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 5930
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 0
+[36m(Learner pid=12743)[0m update speed: 0.0/s
+[36m(autoscaler +28s)[0m Tip: use `ray status` to view detailed cluster status. To disable these messages, set RAY_SCHEDULER_EVENTS=0.
+[33m(autoscaler +28s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 468.2/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 8271
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 0
+[36m(Learner pid=12743)[0m update speed: 0.0/s
+[36m(pid=gcs_server)[0m [2025-12-05 21:03:40,152 E 12574 12574] (gcs_server) gcs_server.cc:303: Failed to establish connection to the event+metrics exporter agent. Events and metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
+[36m(Learner pid=12743)[0m number of updates: 0
+[36m(Learner pid=12743)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 493.2/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 10737
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[33m(raylet)[0m [2025-12-05 21:03:41,935 E 12695 12695] (raylet) main.cc:979: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
+[36m(GlobalBuffer pid=12745)[0m [2025-12-05 21:03:44,768 E 12745 12841] core_worker_process.cc:837: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 456.4/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 13019
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 0
+[36m(Learner pid=12743)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 472.6/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 15382
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 0
+[36m(Learner pid=12743)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 478.2/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 17773
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 0
+[36m(Learner pid=12743)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 471.6/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 20131
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 0
+[36m(Learner pid=12743)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 506.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 22661
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 0
+[36m(Learner pid=12743)[0m update speed: 0.0/s
+[33m(autoscaler +1m3s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 458.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 24951
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 0
+[36m(Learner pid=12743)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 483.8/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 27370
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 0
+[36m(Learner pid=12743)[0m update speed: 0.0/s
+start training
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 559.4/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 30046
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 0
+[36m(Learner pid=12743)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=12745)[0m no prepared data
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 433.3/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 29997
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 3
+[36m(Learner pid=12743)[0m update speed: 0.3/s
+[36m(Learner pid=12743)[0m loss: 0.0159
+[36m(Learner pid=12743)[0m number of updates: 10
+[36m(Learner pid=12743)[0m update speed: 0.7/s
+[36m(Learner pid=12743)[0m loss: 0.0091
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 431.8/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 30077
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[33m(autoscaler +1m38s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 421.6/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 30103
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 16
+
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0123
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 416.6/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 30390
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 22
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0129
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 453.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 30948
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 28
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0113
+[33m(autoscaler +2m13s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 418.1/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 30422
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 34
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0108
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 461.8/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 30796
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 40
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0070
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 408.6/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 30700
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+
+[36m(Learner pid=12743)[0m number of updates: 48
+[36m(Learner pid=12743)[0m update speed: 0.8/s
+[36m(Learner pid=12743)[0m loss: 0.0095
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 412.7/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31077
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 54
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0127
+[33m(autoscaler +2m48s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 459.4/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31834
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 61
+[36m(Learner pid=12743)[0m update speed: 0.7/s
+[36m(Learner pid=12743)[0m loss: 0.0104
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 391.2/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32130
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 67
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0096
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 467.9/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31954
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 73
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0110
+
+[33m(autoscaler +3m23s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 403.9/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32059
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 79
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0103
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 476.5/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31776
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 85
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0138
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 414.4/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31340
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 91
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0134
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 422.8/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 30792
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 98
+[36m(Learner pid=12743)[0m update speed: 0.7/s
+[36m(Learner pid=12743)[0m loss: 0.0108
+[33m(autoscaler +3m58s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 393.6/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 30436
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 104
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0101
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 473.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 30625
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 110
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0068
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 417.1/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 30251
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 116
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0097
+[33m(autoscaler +4m33s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 416.8/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 30725
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 122
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0063
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 478.3/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31305
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 129
+[36m(Learner pid=12743)[0m update speed: 0.7/s
+[36m(Learner pid=12743)[0m loss: 0.0063
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 406.8/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31211
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 136
+[36m(Learner pid=12743)[0m update speed: 0.7/s
+[36m(Learner pid=12743)[0m loss: 0.0119
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 429.4/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31238
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 142
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0062
+[33m(autoscaler +5m8s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 448.3/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31881
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 148
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0121
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 422.3/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32058
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 154
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0101
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 467.2/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32700
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 160
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0127
+[33m(autoscaler +5m43s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 380.7/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32550
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 167
+[36m(Learner pid=12743)[0m update speed: 0.7/s
+[36m(Learner pid=12743)[0m loss: 0.0105
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 489.7/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32640
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 173
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0087
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 435.4/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32690
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 179
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0115
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 441.5/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 33348
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 185
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0088
+[33m(autoscaler +6m18s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 425.3/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32788
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 191
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0074
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 422.7/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32384
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 197
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0096
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 431.2/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31324
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 203
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0148
+[33m(autoscaler +6m53s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 421.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31126
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 210
+[36m(Learner pid=12743)[0m update speed: 0.7/s
+[36m(Learner pid=12743)[0m loss: 0.0095
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 370.5/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 30128
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 216
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0086
+
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 452.9/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 29869
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 222
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0138
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 433.2/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 29663
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 227
+[36m(Learner pid=12743)[0m update speed: 0.5/s
+[36m(Learner pid=12743)[0m loss: 0.0130
+[33m(autoscaler +7m28s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 425.9/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 30340
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 233
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0127
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 473.5/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31556
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 239
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0091
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 428.4/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31997
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 245
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0086
+[33m(autoscaler +8m4s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 426.4/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32826
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 251
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0117
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 470.2/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 33822
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 258
+[36m(Learner pid=12743)[0m update speed: 0.7/s
+[36m(Learner pid=12743)[0m loss: 0.0101
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 417.2/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 33470
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 264
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0110
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 420.8/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 33523
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 270
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0092
+[33m(autoscaler +8m39s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 418.3/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32805
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 276
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0067
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 399.3/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32285
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 282
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0090
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 474.6/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32777
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 288
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0109
+[33m(autoscaler +9m14s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 430.6/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31994
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 294
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0098
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 440.1/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31078
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 300
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0103
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 393.6/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31278
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 307
+[36m(Learner pid=12743)[0m update speed: 0.7/s
+[36m(Learner pid=12743)[0m loss: 0.0090
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 454.4/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32109
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 313
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0133
+[33m(autoscaler +9m49s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 419.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32709
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 319
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0131
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 440.6/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 33241
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 325
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0060
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 460.3/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32982
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 331
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0137
+[33m(autoscaler +10m24s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 440.4/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32724
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 337
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0069
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 416.1/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32976
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 343
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0089
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 449.7/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 33032
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 350
+[36m(Learner pid=12743)[0m update speed: 0.7/s
+[36m(Learner pid=12743)[0m loss: 0.0102
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 421.1/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32049
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 356
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0118
+[33m(autoscaler +10m59s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 439.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31869
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 362
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0096
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 399.7/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31458
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 369
+[36m(Learner pid=12743)[0m update speed: 0.7/s
+[36m(Learner pid=12743)[0m loss: 0.0109
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 469.6/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31473
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 375
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0082
+[33m(autoscaler +11m34s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 413.4/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32059
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 381
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0104
+[36m(Learner pid=12743)[0m number of updates: 387
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0095
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 474.8/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32505
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A
+
+[36m(GlobalBuffer pid=12745)[0m    N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 428.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31835
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 393
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0167
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 405.7/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32020
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 399
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0095
+[33m(autoscaler +12m9s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 479.4/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 33199
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 405
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0112
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 416.9/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32746
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 411
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0141
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 437.1/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32221
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 417
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0114
+[33m(autoscaler +12m44s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 427.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32193
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 423
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0096
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 479.1/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32822
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 429
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0143
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 439.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32401
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 435
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0155
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 410.6/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32735
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 441
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0109
+[33m(autoscaler +13m19s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 447.7/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32454
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 448
+[36m(Learner pid=12743)[0m update speed: 0.7/s
+[36m(Learner pid=12743)[0m loss: 0.0102
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 458.2/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 33205
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 454
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0101
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 429.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 33032
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 460
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0106
+[33m(autoscaler +13m54s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 407.3/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32704
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 467
+[36m(Learner pid=12743)[0m update speed: 0.7/s
+[36m(Learner pid=12743)[0m loss: 0.0060
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 386.8/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32015
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 473
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0128
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 527.6/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 33827
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 479
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0143
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 422.8/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 33420
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 485
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0105
+[33m(autoscaler +14m29s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 420.6/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32385
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 491
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0083
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 434.9/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31404
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 497
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0087
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 395.7/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31436
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 503
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0143
+[33m(autoscaler +15m4s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 475.5/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32286
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 509
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0064
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 429.7/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32561
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 515
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0120
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 458.9/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31662
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 520
+[36m(Learner pid=12743)[0m update speed: 0.5/s
+[36m(Learner pid=12743)[0m loss: 0.0139
+
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 445.8/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31964
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 527
+[36m(Learner pid=12743)[0m update speed: 0.7/s
+[36m(Learner pid=12743)[0m loss: 0.0078
+[33m(autoscaler +15m39s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 442.7/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32483
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 533
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0112
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 404.1/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32466
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 539
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0159
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 436.7/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32836
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 546
+[36m(Learner pid=12743)[0m update speed: 0.7/s
+[36m(Learner pid=12743)[0m loss: 0.0090
+[33m(autoscaler +16m14s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 426.2/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31729
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 552
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0163
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 402.9/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 30837
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 558
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0105
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 472.9/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31592
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 564
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0087
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 423.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 30633
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 570
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0118
+[33m(autoscaler +16m49s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 423.4/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 30269
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 576
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0129
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 461.2/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31264
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 582
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0076
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 418.6/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 30899
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 589
+[36m(Learner pid=12743)[0m update speed: 0.7/s
+[36m(Learner pid=12743)[0m loss: 0.0073
+[33m(autoscaler +17m24s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 402.9/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 30800
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 595
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0113
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 458.9/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31538
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 601
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0128
+
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 426.7/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 30543
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 607
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0096
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 432.3/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31173
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 614
+[36m(Learner pid=12743)[0m update speed: 0.7/s
+[36m(Learner pid=12743)[0m loss: 0.0074
+[33m(autoscaler +17m59s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 403.8/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31197
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 620
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0096
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 511.5/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32610
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 626
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0147
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 440.1/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 33148
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 632
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0108
+[33m(autoscaler +18m34s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 442.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 33372
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 638
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0138
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 477.2/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 34905
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 644
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0106
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 370.6/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 34273
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 650
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0105
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 476.1/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 35583
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 655
+[36m(Learner pid=12743)[0m update speed: 0.5/s
+[36m(Learner pid=12743)[0m loss: 0.0152
+[33m(autoscaler +19m9s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 487.2/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 36356
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 662
+[36m(Learner pid=12743)[0m update speed: 0.7/s
+[36m(Learner pid=12743)[0m loss: 0.0088
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 439.2/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 36669
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 668
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0125
+
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 426.6/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 34822
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 674
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0106
+[33m(autoscaler +19m44s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 440.3/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 33781
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 680
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0102
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 371.4/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 33856
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 686
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0130
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 475.3/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 33043
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 692
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0154
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 428.8/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32026
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 698
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0150
+[33m(autoscaler +20m19s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 420.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31962
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 705
+[36m(Learner pid=12743)[0m update speed: 0.7/s
+[36m(Learner pid=12743)[0m loss: 0.0105
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 473.0/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 31620
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 711
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0150
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 340.9/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32022
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 716
+[36m(Learner pid=12743)[0m update speed: 0.5/s
+[36m(Learner pid=12743)[0m loss: 0.0158
+[33m(autoscaler +20m54s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 426.5/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32650
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 722
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0090
+
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 445.6/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 32933
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 728
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0126
+
+[36m(GlobalBuffer pid=12745)[0m buffer update speed: 453.1/s
+[36m(GlobalBuffer pid=12745)[0m buffer size: 33282
+[36m(GlobalBuffer pid=12745)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=12745)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=12745)[0m (3, 10): 0/0
+[36m(Learner pid=12743)[0m number of updates: 734
+[36m(Learner pid=12743)[0m update speed: 0.6/s
+[36m(Learner pid=12743)[0m loss: 0.0094
+Traceback (most recent call last):
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 53, in <module>
+    main()
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 42, in main
+    time.sleep(log_interval)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 53, in <module>
+    main()
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 42, in main
+    time.sleep(log_interval)
+KeyboardInterrupt
+[0m

@@ -1,0 +1,73 @@
+2025-12-04 22:30:37,663	INFO worker.py:2023 -- Started a local Ray instance.
+/opt/pytorch/lib/python3.12/site-packages/ray/_private/worker.py:2062: FutureWarning: Tip: In future versions of Ray, Ray will no longer override accelerator visible devices env var if num_gpus=0 or num_gpus=None (default). To enable this behavior and turn off this error message, set RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO=0
+  warnings.warn(
+[36m(GlobalBuffer pid=14139)[0m /home/ubuntu/SIGMA-MQL/worker.py:41: FutureWarning: In the future `np.bool_` will be defined as the corresponding NumPy scalar.
+[36m(GlobalBuffer pid=14139)[0m   self.obs_buf = np.zeros(((local_buffer_capacity+1)*episode_capacity, configs.max_num_agents, *configs.obs_shape), dtype=np.bool_)
+[36m(GlobalBuffer pid=14139)[0m Exception raised in creation task: The actor died because of an error raised in its creation task, [36mray::GlobalBuffer.__init__()[39m (pid=14139, ip=172.31.40.225)
+[36m(GlobalBuffer pid=14139)[0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[36m(GlobalBuffer pid=14139)[0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[36m(GlobalBuffer pid=14139)[0m   File "/home/ubuntu/SIGMA-MQL/worker.py", line 41, in __init__
+[36m(GlobalBuffer pid=14139)[0m     self.obs_buf = np.zeros(((local_buffer_capacity+1)*episode_capacity, configs.max_num_agents, *configs.obs_shape), dtype=np.bool_)
+[36m(GlobalBuffer pid=14139)[0m                                                                                                                             ^^^^^^^
+[36m(GlobalBuffer pid=14139)[0m   File "/opt/pytorch/lib/python3.12/site-packages/numpy/__init__.py", line 324, in __getattr__
+[36m(GlobalBuffer pid=14139)[0m     raise AttributeError(__former_attrs__[attr])
+[36m(GlobalBuffer pid=14139)[0m AttributeError: module 'numpy' has no attribute 'bool'.Traceback (most recent call last):
+
+[36m(GlobalBuffer pid=14139)[0m `np.bool_` was a deprecated alias for the builtin `bool`. To avoid this error in existing code, use `bool` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.bool__` here.
+[36m(GlobalBuffer pid=14139)[0m The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:  File "/home/ubuntu/SIGMA-MQL/train.py", line 31, in main
+    while not ray.get(buffer.ready.remote()):
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 22, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+
+  File "/opt/pytorch/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 104, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/ray/_private/worker.py", line 2972, in get
+    values, debugger_breakpoint = worker.get_objects(
+                                  ^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/ray/_private/worker.py", line 1033, in get_objects
+    raise value
+ray.exceptions.ActorDiedError: The actor died because of an error raised in its creation task, [36mray::GlobalBuffer.__init__()[39m (pid=14139, ip=172.31.40.225)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/SIGMA-MQL/worker.py", line 41, in __init__
+    self.obs_buf = np.zeros(((local_buffer_capacity+1)*episode_capacity, configs.max_num_agents, *configs.obs_shape), dtype=np.bool_)
+                                                                                                                            ^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/numpy/__init__.py", line 324, in __getattr__
+    raise AttributeError(__former_attrs__[attr])
+AttributeError: module 'numpy' has no attribute 'bool'.
+`np.bool_` was a deprecated alias for the builtin `bool`. To avoid this error in existing code, use `bool` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.bool__` here.
+The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:
+    https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations. Did you mean: 'bool_'?
+Traceback (most recent call last):
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 53, in <module>
+    main()
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 31, in main
+    while not ray.get(buffer.ready.remote()):
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/ray/_private/auto_init_hook.py", line 22, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/ray/_private/client_mode_hook.py", line 104, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/ray/_private/worker.py", line 2972, in get
+    values, debugger_breakpoint = worker.get_objects(
+                                  ^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/ray/_private/worker.py", line 1033, in get_objects
+    raise value
+ray.exceptions.ActorDiedError: The actor died because of an error raised in its creation task, [36mray::GlobalBuffer.__init__()[39m (pid=14139, ip=172.31.40.225)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/SIGMA-MQL/worker.py", line 41, in __init__
+    self.obs_buf = np.zeros(((local_buffer_capacity+1)*episode_capacity, configs.max_num_agents, *configs.obs_shape), dtype=np.bool_)
+                                                                                                                            ^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/numpy/__init__.py", line 324, in __getattr__
+    raise AttributeError(__former_attrs__[attr])
+AttributeError: module 'numpy' has no attribute 'bool'.
+`np.bool_` was a deprecated alias for the builtin `bool`. To avoid this error in existing code, use `bool` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.bool__` here.
+The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:
+    https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations. Did you mean: 'bool_'?
+[0m

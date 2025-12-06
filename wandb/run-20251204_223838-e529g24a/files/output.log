@@ -1,0 +1,61 @@
+2025-12-04 22:38:41,466	INFO worker.py:2023 -- Started a local Ray instance.
+/opt/pytorch/lib/python3.12/site-packages/ray/_private/worker.py:2062: FutureWarning: Tip: In future versions of Ray, Ray will no longer override accelerator visible devices env var if num_gpus=0 or num_gpus=None (default). To enable this behavior and turn off this error message, set RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO=0
+  warnings.warn(
+[36m(GlobalBuffer pid=22577)[0m buffer update speed: 77.6/s
+[36m(GlobalBuffer pid=22577)[0m buffer size: 388
+[36m(GlobalBuffer pid=22577)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=22577)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=22577)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=22577)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(Learner pid=22580)[0m number of updates: 0
+[36m(Learner pid=22580)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=22577)[0m buffer update speed: 306.6/s
+[36m(GlobalBuffer pid=22577)[0m buffer size: 1921
+[36m(GlobalBuffer pid=22577)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=22577)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=22577)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=22577)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(Learner pid=22580)[0m number of updates: 0
+[36m(Learner pid=22580)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=22577)[0m buffer update speed: 237.8/s
+[36m(GlobalBuffer pid=22577)[0m buffer size: 3110
+[36m(GlobalBuffer pid=22577)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=22577)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=22577)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=22577)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(Learner pid=22580)[0m number of updates: 0
+[36m(Learner pid=22580)[0m update speed: 0.0/s
+[36m(autoscaler +28s)[0m Tip: use `ray status` to view detailed cluster status. To disable these messages, set RAY_SCHEDULER_EVENTS=0.
+[33m(autoscaler +28s)[0m Warning: The following resource request cannot be scheduled right now: {'CPU': 1.0}. This is likely due to all cluster resources being claimed by actors. Consider creating fewer actors or adding more nodes to this Ray cluster.
+[36m(GlobalBuffer pid=22577)[0m buffer update speed: 225.2/s
+[36m(GlobalBuffer pid=22577)[0m buffer size: 4236
+[36m(GlobalBuffer pid=22577)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=22577)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=22577)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=22577)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(Learner pid=22580)[0m number of updates: 0
+[36m(Learner pid=22580)[0m update speed: 0.0/s
+[36m(pid=gcs_server)[0m [2025-12-04 22:39:09,586 E 22438 22438] (gcs_server) gcs_server.cc:303: Failed to establish connection to the event+metrics exporter agent. Events and metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
+[33m(raylet)[0m [2025-12-04 22:39:11,394 E 22538 22538] (raylet) main.cc:979: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
+[36m(GlobalBuffer pid=22577)[0m buffer update speed: 202.4/s
+[36m(GlobalBuffer pid=22577)[0m buffer size: 5248
+[36m(GlobalBuffer pid=22577)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=22577)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=22577)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=22577)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(Learner pid=22580)[0m number of updates: 0
+[36m(Learner pid=22580)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=22577)[0m [2025-12-04 22:39:14,744 E 22577 22645] core_worker_process.cc:837: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
+Traceback (most recent call last):
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 53, in <module>
+    main()
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 32, in main
+    time.sleep(5)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 53, in <module>
+    main()
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 32, in main
+    time.sleep(5)
+KeyboardInterrupt
+[0m

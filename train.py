@@ -45,9 +45,10 @@ def main(num_actors=configs.num_actors, log_interval=configs.log_interval):
         print()
 
 if __name__ == '__main__':
-    # wandb.init(
-    #     # set the wandb project where this run will be logged
-    #     project="mapf",
-    # )
+    wandb.init(
+        # set the wandb project where this run will be logged
+        entity="sigmamql",
+        project="SIGMA-MQL",
+    )
     main()
-    # wandb.finish()
+    wandb.finish()
