@@ -16,8 +16,7 @@ torch.manual_seed(configs.test_seed)
 np.random.seed(configs.test_seed)
 random.seed(configs.test_seed)
 test_num = 200
-device = torch.device('cpu')
-torch.set_num_threads(1)
+# Thread configuration is now handled in configs.py
 
 def create_test(test_env_settings, num_test_cases):
 
@@ -125,7 +124,7 @@ def test_model(model_range):
     '''
     network = Network()
     network.eval()
-    network.to(device)
+    network.to(configs.device)
     if configs.test_scenario == 'house':
         test_set = configs.house_test_env_settings
     else:
@@ -171,7 +170,7 @@ def test_model(model_range):
     # elif isinstance(model_range, tuple):
     for model_name in model_range:
         filename = f"./models/result/{model_name}.txt"
-        state_dict = torch.load(f'./models/{model_name}.pth', map_location=device)
+        state_dict = torch.load(f'./models/{model_name}.pth', map_location=configs.device)
         network.load_state_dict(state_dict)
         network.eval()
         network.share_memory()
@@ -243,8 +242,8 @@ def make_animation(model_name: int, test_set_name: tuple, test_case_idx: int, st
 
     network = Network()
     network.eval()
-    network.to(device)
-    state_dict = torch.load('models/{}.pth'.format(model_name), map_location=device)
+    network.to(configs.device)
+    state_dict = torch.load('models/{}.pth'.format(model_name), map_location=configs.device)
     network.load_state_dict(state_dict)
 
     test_name = env_name
@@ -283,7 +282,7 @@ def make_animation(model_name: int, test_set_name: tuple, test_case_idx: int, st
             imgs[-1].append(text)
 
 
-        actions, _, _, _ = network.step(torch.from_numpy(obs.astype(np.float32)).to(device), torch.from_numpy(pos.astype(np.float32)).to(device))
+        actions, _, _, _ = network.step(torch.from_numpy(obs.astype(np.float32)).to(configs.device), torch.from_numpy(pos.astype(np.float32)).to(configs.device))
         (obs, pos), _, done, _ = env.step(actions)
         # print(done)
 

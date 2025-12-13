@@ -1,6 +1,98 @@
+import torch
+import os
+import multiprocessing as mp
+
 communication = False
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+def configure_threads(for_ray_actor=False, num_cpus_per_actor=1):
+    """
+    Automatically detect CPU count and configure PyTorch and OpenMP threads.
+    
+    Args:
+        for_ray_actor: If True, configure for Ray actors.
+        num_cpus_per_actor: Number of CPUs allocated to this actor (for thread calculation).
+    """
+    # Detect CPU count
+    cpu_count = mp.cpu_count()
+    
+    if for_ray_actor:
+        # For Ray actors, use threads equal to allocated CPUs
+        num_threads = max(1, int(num_cpus_per_actor))
+    else:
+        # For main process, use all available CPUs
+        # Leave 1-2 cores free for system/other processes if we have many cores
+        if cpu_count > 8:
+            num_threads = max(1, cpu_count - 2)
+        else:
+            num_threads = cpu_count
+    
+    # Configure PyTorch
+    torch.set_num_threads(num_threads)
+    
+    # Configure OpenMP
+    os.environ["OMP_NUM_THREADS"] = str(num_threads)
+    os.environ["MKL_NUM_THREADS"] = str(num_threads)
+    
+    if not for_ray_actor:
+        print(f"Detected {cpu_count} CPU cores")
+        print(f"Configured PyTorch threads: {num_threads}")
+        print(f"Configured OMP_NUM_THREADS: {num_threads}")
+        print(f"Configured MKL_NUM_THREADS: {num_threads}")
+    
+    return num_threads
 
+def calculate_ray_resources(desired_num_actors=20):
+    """
+    Automatically calculate Ray actor resources based on available CPUs.
+    Args:
+        desired_num_actors: Desired number of actors (may be reduced if not enough CPUs)
+    Returns: (num_actors, cpus_per_actor, cpus_per_buffer, cpus_per_learner)
+    """
+    total_cpus = mp.cpu_count()
+    
+    # Reserve CPUs for GlobalBuffer and Learner
+    cpus_per_buffer = 1
+    cpus_per_learner = 1
+    reserved_cpus = cpus_per_buffer + cpus_per_learner
+    
+    # Calculate available CPUs for actors
+    available_for_actors = total_cpus - reserved_cpus
+    
+    if available_for_actors < 1:
+        print(f"Warning: Only {total_cpus} CPUs available. Need at least {reserved_cpus + 1} CPUs.")
+        print(f"Using minimal configuration: 1 actor with shared CPUs.")
+        return 1, 0.5, cpus_per_buffer, cpus_per_learner
+    
+    # Try to use fractional CPUs to maximize parallelism
+    # Target: use all available CPUs efficiently
+    if available_for_actors >= desired_num_actors:
+        # Enough CPUs for all actors with 1 CPU each
+        cpus_per_actor = 1.0
+        actual_num_actors = min(desired_num_actors, available_for_actors)
+    else:
+        # Not enough CPUs, use fractional allocation
+        # Prefer more actors with fractional CPUs for better parallelism
+        cpus_per_actor = available_for_actors / desired_num_actors
+        actual_num_actors = desired_num_actors
+        # Ensure at least 0.25 CPU per actor (Ray minimum is 0.1, but 0.25 is more reasonable)
+        if cpus_per_actor < 0.25:
+            cpus_per_actor = 0.25
+            actual_num_actors = int(available_for_actors / cpus_per_actor)
+    
+    print(f"Ray resource allocation:")
+    print(f"  Total CPUs: {total_cpus}")
+    print(f"  GlobalBuffer: {cpus_per_buffer} CPU")
+    print(f"  Learner: {cpus_per_learner} CPU")
+    print(f"  Actors: {actual_num_actors} × {cpus_per_actor:.2f} CPU = {actual_num_actors * cpus_per_actor:.2f} CPUs")
+    print(f"  Total allocated: {reserved_cpus + actual_num_actors * cpus_per_actor:.2f} CPUs")
+    
+    return actual_num_actors, cpus_per_actor, cpus_per_buffer, cpus_per_learner
+
+# Auto-configure threads for main process (only if not already set)
+# This will be called when configs is imported in the main process
+if "OMP_NUM_THREADS" not in os.environ:
+    configure_threads(for_ray_actor=False)
 
 ############################################################
 ####################    environment     ####################
@@ -24,7 +116,7 @@ action_dim = 5
 ############################################################
 
 # basic training setting
-num_actors = 20
+num_actors = 20  # Desired number of actors (will be auto-adjusted based on available CPUs)
 log_interval = 10
 training_times = 600000
 save_interval=2000
@@ -33,7 +125,7 @@ batch_size=192
 learning_starts=50000
 target_network_update_freq=2000
 save_path='./models'
-max_episode_length = 512
+max_episode_length = 256  # Reduced for 15x15 maps (increase for larger maps)
 seq_len = 16
 load_model = False
 load_path = './models/save_model/model_house/84000_house.pth'
@@ -59,27 +151,39 @@ episode_capacity = 2048
 prioritized_replay_alpha=0.6
 prioritized_replay_beta=0.4
 
-# curriculum learning
-init_env_settings = (3, 10) # num_agents, map_length
-max_num_agents = 5
-max_map_length = 40
-pass_rate = 0.9
+# Fixed training settings (change these to scale up later)
+init_env_settings = (3, 15)  # num_agents, map_length
+max_num_agents = 3  # Keep same as init for fixed training (increase later if needed)
+max_map_length = 15  # Keep same as init for fixed training (increase later if needed)
+pass_rate = 0.9  # Only used if curriculum learning enabled
 # dqn network setting
 cnn_channel = 128
 hidden_dim = 256
 
-# communication
-max_comm_agents = 10 # including agent itself, means one can at most communicate with (max_comm_agents-1) agents
+# communication (must be >= max_num_agents)
+max_comm_agents = 5  # Set to >= max_num_agents (currently 3, but 5 allows room for growth)
 
 # communication block
 num_comm_layers = 2
 num_comm_heads = 2
 
+# Auto-calculate Ray resources based on available CPUs
+# This must be called after num_actors is defined
+ray_num_actors, ray_cpus_per_actor, ray_cpus_per_buffer, ray_cpus_per_learner = calculate_ray_resources(desired_num_actors=num_actors)
 
 test_seed = 0
 num_test_cases = 200
 
-test_scenario = 'house'
+############################################################
+####################  Map Type Settings ####################
+############################################################
+
+# TRAINING: Map type to train on (change this for each training run)
+# Options: 'house', 'maze', 'random', 'tunnels', 'warehouse'
+train_map_type = 'random' 
+
+# TESTING: Map type for evaluation (independent of training)
+test_scenario = 'house'  # Used during test.py evaluation
 
 test_env_settings = ((40, 4, 0.3), (40, 8, 0.3), (40, 16, 0.3), (40, 32, 0.3), (40, 64, 0.3), (40, 128, 0.3),
                     (80, 4, 0.3), (80, 8, 0.3), (80, 16, 0.3), (80, 32, 0.3), (80, 64, 0.3), (80, 128, 0.3)) # map length, number of agents, density

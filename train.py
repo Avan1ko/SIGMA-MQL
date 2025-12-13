@@ -11,13 +11,14 @@ import configs
 
 import wandb
 
-os.environ["OMP_NUM_THREADS"] = "1"
+# Ensure thread configuration is set for main process
+configs.configure_threads(for_ray_actor=False)
 torch.manual_seed(0)
 np.random.seed(0)
 random.seed(0)
 
 
-def main(num_actors=configs.num_actors, log_interval=configs.log_interval):
+def main(num_actors=configs.ray_num_actors, log_interval=configs.log_interval):
     ray.init(local_mode=False)
 
     buffer = GlobalBuffer.remote()

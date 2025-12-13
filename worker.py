@@ -11,16 +11,19 @@ from torch.optim import Adam
 from torch.optim.lr_scheduler import MultiStepLR
 from torch.amp import GradScaler
 import numpy as np
+import matplotlib.pyplot as plt
 from model import Network
 from environment import Environment
 from buffer import SumTree, LocalBuffer
 import configs
 
-@ray.remote(num_cpus=1)
+@ray.remote(num_cpus=configs.ray_cpus_per_buffer)
 class GlobalBuffer:
     def __init__(self, episode_capacity=configs.episode_capacity, local_buffer_capacity=configs.max_episode_length,
                 init_env_settings=configs.init_env_settings, max_comm_agents=configs.max_comm_agents,
                 alpha=configs.prioritized_replay_alpha, beta=configs.prioritized_replay_beta):
+        # Configure threads for Ray actor
+        configs.configure_threads(for_ray_actor=True, num_cpus_per_actor=configs.ray_cpus_per_buffer)
 
         self.capacity = episode_capacity
         self.local_buffer_capacity = local_buffer_capacity
@@ -260,15 +263,17 @@ class GlobalBuffer:
             
         return True
 
-@ray.remote(num_cpus=1, num_gpus=1)
+@ray.remote(num_cpus=configs.ray_cpus_per_learner, num_gpus=1)
 class Learner:
     def __init__(self, buffer: GlobalBuffer):
-        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        # Configure threads for Ray actor
+        configs.configure_threads(for_ray_actor=True, num_cpus_per_actor=configs.ray_cpus_per_learner)
+        
         self.model = Network()
         if configs.load_model:
-            state_dict = torch.load(configs.load_path, map_location=self.device)
+            state_dict = torch.load(configs.load_path, map_location=configs.device)
             self.model.load_state_dict(state_dict, strict=True)
-        self.model.to(self.device)
+        self.model.to(configs.device)
         self.tar_model = deepcopy(self.model)
         self.optimizer = Adam(self.model.parameters(), lr=1e-4)
         self.scheduler = MultiStepLR(self.optimizer, milestones=[200000, 400000], gamma=0.5)
@@ -277,7 +282,8 @@ class Learner:
         self.last_counter = 0
         self.done = False
         self.loss = 0
-
+        self.loss_history = []
+        os.makedirs(configs.save_path, exist_ok=True)
         self.store_weights()
 
     def get_weights(self):
@@ -304,10 +310,10 @@ class Learner:
                 data = ray.get(data_id)
     
                 b_obs, b_action, b_reward, b_done, b_steps, b_seq_len, b_hidden, b_comm_mask, idxes, weights, old_ptr = data
-                b_obs, b_action, b_reward = b_obs.to(self.device), b_action.to(self.device), b_reward.to(self.device)
-                b_done, b_steps, weights = b_done.to(self.device), b_steps.to(self.device), weights.to(self.device)
-                b_hidden = b_hidden.to(self.device)
-                b_comm_mask = b_comm_mask.to(self.device)
+                b_obs, b_action, b_reward = b_obs.to(configs.device), b_action.to(configs.device), b_reward.to(configs.device)
+                b_done, b_steps, weights = b_done.to(configs.device), b_steps.to(configs.device), weights.to(configs.device)
+                b_hidden = b_hidden.to(configs.device)
+                b_comm_mask = b_comm_mask.to(configs.device)
 
                 b_next_seq_len = [ (seq_len+forward_steps).item() for seq_len, forward_steps in zip(b_seq_len, b_steps) ]
                 b_next_seq_len = torch.LongTensor(b_next_seq_len)
@@ -361,16 +367,26 @@ class Learner:
         print('number of updates: {}'.format(self.counter))
         print('update speed: {}/s'.format((self.counter-self.last_counter)/interval))
         if self.counter != self.last_counter:
-            print('loss: {:.4f}'.format(self.loss / (self.counter-self.last_counter)))
+            avg_loss = self.loss / (self.counter - self.last_counter)
+            print('loss: {:.4f}'.format(avg_loss))
+            self.loss_history.append((self.counter, avg_loss))
+            if self.counter % 2000 == 0:
+                epochs, losses = zip(*self.loss_history)
+                plt.plot(epochs, losses)
+                plt.savefig(os.path.join(configs.save_path, 'loss_plot.png'))
+                plt.close()
         
         self.last_counter = self.counter
         self.loss = 0
         return self.done
 
 
-@ray.remote(num_cpus=1)
+@ray.remote(num_cpus=configs.ray_cpus_per_actor)
 class Actor:
     def __init__(self, worker_id: int, epsilon: float, learner: Learner, buffer: GlobalBuffer):
+        # Configure threads for Ray actor
+        configs.configure_threads(for_ray_actor=True, num_cpus_per_actor=configs.ray_cpus_per_actor)
+        
         self.id = worker_id
         self.model = Network()
         self.model.eval()
@@ -398,7 +414,7 @@ class Actor:
             # return data and update observation
             local_buffer.add(q_val[0], actions[0], rewards[0], next_obs, hidden, comm_mask)
 
-            if done == False and self.env.steps < self.max_episode_length:
+            if not done and self.env.steps < self.max_episode_length:
                 obs, pos = next_obs, next_pos
             else:
                 # finish and send buffer

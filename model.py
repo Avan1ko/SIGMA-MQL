@@ -6,8 +6,6 @@ from torch.amp import autocast
 import configs
 import wandb
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
 class ResBlock(nn.Module):
     def __init__(self, channel):
         super().__init__()
@@ -73,7 +71,7 @@ class MultiHeadAttention(nn.Module):
         assert attn_mask.size() == (batch_size, self.num_heads, num_agents, num_agents)
 
         # context: [batch_size x num_heads x num_agents x output_dim]
-        with autocast(device_type=device.type, enabled=False):
+        with autocast(device_type=configs.device, enabled=False):
             scores = torch.matmul(q_s.float(), k_s.float().transpose(-1, -2)) / (self.output_dim**0.5) # scores : [batch_size x n_heads x num_agents x num_agents]
             scores.masked_fill_(attn_mask, -1e9) # Fills elements of self tensor with value where mask is one.
             attn = F.softmax(scores, dim=-1)
@@ -392,7 +390,7 @@ class Network(nn.Module):
     def reset(self):
         self.hidden = None
 
-    @autocast(device_type=device)
+    @autocast(device_type=configs.device)
     def forward(self, obs, steps, hidden, comm_mask):
         # comm_mask shape: batch_size x seq_len x max_num_agents x max_num_agents
         max_steps = obs.size(1)
@@ -503,7 +501,7 @@ class Network(nn.Module):
         state_val = self.state(hidden)
 
         sheaf_section_loss = sheaf_section_loss[:, 0]
-        sheaf_section_loss = sheaf_section_loss.unsqueeze(1).to(device)
+        sheaf_section_loss = sheaf_section_loss.unsqueeze(1).to(configs.device)
         # wandb.log({"sheaf_section_loss": sheaf_section_loss})
         if configs.Sec_cons:
             q_val = (
