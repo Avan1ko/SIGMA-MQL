@@ -79,7 +79,7 @@ num_comm_heads = 2
 test_seed = 0
 num_test_cases = 200
 
-test_senario = 'house'
+test_scenario = 'house'
 
 test_env_settings = ((40, 4, 0.3), (40, 8, 0.3), (40, 16, 0.3), (40, 32, 0.3), (40, 64, 0.3), (40, 128, 0.3),
                     (80, 4, 0.3), (80, 8, 0.3), (80, 16, 0.3), (80, 32, 0.3), (80, 64, 0.3), (80, 128, 0.3)) # map length, number of agents, density

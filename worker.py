@@ -9,7 +9,7 @@ import torch
 import torch.nn as nn
 from torch.optim import Adam
 from torch.optim.lr_scheduler import MultiStepLR
-from torch.cuda.amp import GradScaler
+from torch.amp import GradScaler
 import numpy as np
 from model import Network
 from environment import Environment

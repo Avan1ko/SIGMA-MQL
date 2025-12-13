@@ -126,7 +126,7 @@ def test_model(model_range):
     network = Network()
     network.eval()
     network.to(device)
-    if configs.test_senario == 'house':
+    if configs.test_scenario == 'house':
         test_set = configs.house_test_env_settings
     else:
         test_set = configs.test_env_settings
@@ -148,7 +148,7 @@ def test_model(model_range):
 
     #     for case in test_set:
     #         write_to_file(filename, f"test set: {case[0]} length {case[1]} agents {case[2]} density")
-    #         if configs.test_senario == 'house':
+    #         if configs.test_scenario == 'house':
     #             with open(f'./house_test_set/{case[0]}length_{case[1]}agents_{case[2]}density.pth', 'rb') as f:
     #                 tests = pickle.load(f)
     #         else:
@@ -181,7 +181,7 @@ def test_model(model_range):
 
         for case in test_set:
             write_to_file(filename, f"test set: {case[0]} length {case[1]} agents {case[2]} density")
-            if configs.test_senario == 'house':
+            if configs.test_scenario == 'house':
                 with open(f'./house_test_set/{case[0]}length_{case[1]}agents_{case[2]}density.pth', 'rb') as f:
                     tests = pickle.load(f)
             else:

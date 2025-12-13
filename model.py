@@ -2,9 +2,10 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn.utils.rnn import pack_padded_sequence
-from torch.cuda.amp import autocast
+from torch.amp import autocast
 import configs
 import wandb
+
 
 class ResBlock(nn.Module):
     def __init__(self, channel):
@@ -27,6 +28,7 @@ class ResBlock(nn.Module):
 
         return x
 
+
 class MultiHeadAttention(nn.Module):
     def __init__(self, input_dim, output_dim, num_heads):
         super().__init__()
@@ -42,33 +44,62 @@ class MultiHeadAttention(nn.Module):
         # input: [batch_size x num_agents x input_dim]
         batch_size, num_agents, input_dim = input.size()
         assert input_dim == self.input_dim
-        
+
         # (B, S, D) -proj-> (B, S, D) -split-> (B, S, H, W) -trans-> (B, H, S, W)
-        q_s = self.W_Q(input).view(batch_size, num_agents, self.num_heads, -1).transpose(1,2)  # q_s: [batch_size x num_heads x num_agents x output_dim]
-        k_s = self.W_K(input).view(batch_size, num_agents, self.num_heads, -1).transpose(1,2)  # k_s: [batch_size x num_heads x num_agents x output_dim]
-        v_s = self.W_V(input).view(batch_size, num_agents, self.num_heads, -1).transpose(1,2)  # v_s: [batch_size x num_heads x num_agents x output_dim]
+        q_s = (
+            self.W_Q(input)
+            .view(batch_size, num_agents, self.num_heads, -1)
+            .transpose(1, 2)
+        )  # q_s: [batch_size x num_heads x num_agents x output_dim]
+        k_s = (
+            self.W_K(input)
+            .view(batch_size, num_agents, self.num_heads, -1)
+            .transpose(1, 2)
+        )  # k_s: [batch_size x num_heads x num_agents x output_dim]
+        v_s = (
+            self.W_V(input)
+            .view(batch_size, num_agents, self.num_heads, -1)
+            .transpose(1, 2)
+        )  # v_s: [batch_size x num_heads x num_agents x output_dim]
 
         if attn_mask.dim() == 2:
             attn_mask = attn_mask.unsqueeze(0)
         assert attn_mask.size(0) == batch_size, 'mask dim {} while batch size {}'.format(attn_mask.size(0), batch_size)
 
-        attn_mask = attn_mask.unsqueeze(1).repeat_interleave(self.num_heads, 1) # attn_mask : [batch_size x num_heads x num_agents x num_agents]
+        attn_mask = attn_mask.unsqueeze(1).repeat_interleave(
+            self.num_heads, 1
+        )  # attn_mask : [batch_size x num_heads x num_agents x num_agents]
         assert attn_mask.size() == (batch_size, self.num_heads, num_agents, num_agents)
 
         # context: [batch_size x num_heads x num_agents x output_dim]
-        with autocast(enabled=False):
-            scores = torch.matmul(q_s.float(), k_s.float().transpose(-1, -2)) / (self.output_dim**0.5) # scores : [batch_size x n_heads x num_agents x num_agents]
-            scores.masked_fill_(attn_mask, -1e9) # Fills elements of self tensor with value where mask is one.
+        with autocast(device_type='cuda', enabled=False):
+            scores = torch.matmul(q_s.float(), k_s.float().transpose(-1, -2)) / (
+                self.output_dim**0.5
+            )  # scores : [batch_size x n_heads x num_agents x num_agents]
+            scores.masked_fill_(
+                attn_mask, -1e9
+            )  # Fills elements of self tensor with value where mask is one.
             attn = F.softmax(scores, dim=-1)
 
         context = torch.matmul(attn, v_s)
-        context = context.transpose(1, 2).contiguous().view(batch_size, num_agents, self.num_heads*self.output_dim) # context: [batch_size x len_q x n_heads * d_v]
+        context = (
+            context.transpose(1, 2)
+            .contiguous()
+            .view(batch_size, num_agents, self.num_heads * self.output_dim)
+        )  # context: [batch_size x len_q x n_heads * d_v]
         output = self.W_O(context)
 
-        return output # output: [batch_size x num_agents x output_dim]
+        return output  # output: [batch_size x num_agents x output_dim]
+
 
 class CommBlock(nn.Module):
-    def __init__(self, input_dim, output_dim=64, num_heads=configs.num_comm_heads, num_layers=configs.num_comm_layers):
+    def __init__(
+        self,
+        input_dim,
+        output_dim=64,
+        num_heads=configs.num_comm_heads,
+        num_layers=configs.num_comm_layers,
+    ):
         super().__init__()
         self.input_dim = input_dim
         self.output_dim = output_dim
@@ -77,12 +108,11 @@ class CommBlock(nn.Module):
 
         self.update_cell = nn.GRUCell(output_dim, input_dim)
 
-
     def forward(self, latent, comm_mask):
-        '''
+        """
         latent shape: batch_size x num_agents x latent_dim
-        
-        '''
+
+        """
         num_agents = latent.size(1)
 
         # agent indices of agent that use communication
@@ -93,21 +123,25 @@ class CommBlock(nn.Module):
         if len(comm_idx[0]) == 0:
             return latent
 
-        if len(comm_idx)>1:
+        if len(comm_idx) > 1:
             update_mask = update_mask.unsqueeze(2)
 
-        attn_mask = comm_mask==False
+        attn_mask = comm_mask == False
 
         for _ in range(self.num_layers):
 
             info = self.self_attn(latent, attn_mask=attn_mask)
             # latent = attn_layer(latent, attn_mask=attn_mask)
-            if len(comm_idx)==1:
+            if len(comm_idx) == 1:
 
                 batch_idx = torch.zeros(len(comm_idx[0]), dtype=torch.long)
-                latent[batch_idx, comm_idx[0]] = self.update_cell(info[batch_idx, comm_idx[0]], latent[batch_idx, comm_idx[0]])
+                latent[batch_idx, comm_idx[0]] = self.update_cell(
+                    info[batch_idx, comm_idx[0]], latent[batch_idx, comm_idx[0]]
+                )
             else:
-                update_info = self.update_cell(info.view(-1, self.output_dim), latent.view(-1, self.input_dim)).view(configs.batch_size, num_agents, self.input_dim)
+                update_info = self.update_cell(
+                    info.view(-1, self.output_dim), latent.view(-1, self.input_dim)
+                ).view(configs.batch_size, num_agents, self.input_dim)
                 # update_mask = update_mask.unsqueeze(2)
                 latent = torch.where(update_mask, update_info, latent)
                 # latent[comm_idx] = self.update_cell(info[comm_idx], latent[comm_idx])
@@ -115,30 +149,31 @@ class CommBlock(nn.Module):
 
         return latent
 
+
 class Network(nn.Module):
-    def __init__(self, input_shape=configs.obs_shape, cnn_channel=configs.cnn_channel, hidden_dim=configs.hidden_dim,
-                max_comm_agents=configs.max_comm_agents):
+    def __init__(
+        self,
+        input_shape=configs.obs_shape,
+        cnn_channel=configs.cnn_channel,
+        hidden_dim=configs.hidden_dim,
+        max_comm_agents=configs.max_comm_agents,
+    ):
 
         super().__init__()
 
         self.input_shape = input_shape
-        self.latent_dim = 16*7*7
+        self.latent_dim = 16 * 7 * 7
         self.hidden_dim = hidden_dim
         self.max_comm_agents = max_comm_agents
 
         self.obs_encoder = nn.Sequential(
             nn.Conv2d(self.input_shape[0], cnn_channel, 3, 1),
             nn.ReLU(True),
-
             ResBlock(cnn_channel),
-
             ResBlock(cnn_channel),
-
             ResBlock(cnn_channel),
-
             nn.Conv2d(cnn_channel, 16, 1, 1),
             nn.ReLU(True),
-
             nn.Flatten(),
         )
 
@@ -148,11 +183,12 @@ class Network(nn.Module):
 
         self.mlp_dim = 1
         self.lambdas = configs.lambdas
-        # MLP for calculating output
+        # MLP for calculating sheaf section: outputs a scalar value per agent
+        # In sheaf theory, this represents the "section" assigned to each agent
         self.mlp = nn.Sequential(
             nn.Linear(self.latent_dim, self.hidden_dim),
             nn.Linear(self.hidden_dim, self.mlp_dim),
-            nn.Sigmoid()
+            nn.Sigmoid(),
         )
 
         # dueling q structure
@@ -176,7 +212,8 @@ class Network(nn.Module):
 
         latent = self.obs_encoder(obs)
 
-        # MLP 输出
+        # MLP output - this is the "sheaf section" for each agent
+        # In sheaf theory, a section assigns a value to each agent. Here it's a scalar (mlp_dim=1)
         mlp_output = self.mlp(latent)
 
         if self.hidden is None:
@@ -189,12 +226,14 @@ class Network(nn.Module):
 
         # masks for communication block
         agents_pos = pos
-        pos_mat = (agents_pos.unsqueeze(1)-agents_pos.unsqueeze(0)).abs()
-        dist_mat = (pos_mat[:,:,0]**2+pos_mat[:,:,1]**2).sqrt()
+        pos_mat = (agents_pos.unsqueeze(1) - agents_pos.unsqueeze(0)).abs()
+        dist_mat = (pos_mat[:, :, 0] ** 2 + pos_mat[:, :, 1] ** 2).sqrt()
         # mask out agents that out of range of FOV
-        in_obs_mask = (pos_mat<=configs.obs_radius).all(2)
+        in_obs_mask = (pos_mat <= configs.obs_radius).all(2)
         # mask out agents that are far away
-        _, ranking = dist_mat.topk(min(self.max_comm_agents, num_agents), dim=1, largest=False)
+        _, ranking = dist_mat.topk(
+            min(self.max_comm_agents, num_agents), dim=1, largest=False
+        )
         dist_mask = torch.zeros((num_agents, num_agents), dtype=torch.bool)
         dist_mask.scatter_(1, ranking, True)
 
@@ -203,32 +242,37 @@ class Network(nn.Module):
         self.hidden = self.comm(self.hidden, comm_mask)
         self.hidden = self.hidden.squeeze(0)
 
-        # 将 MLP 输出与隐藏状态拼接，传递给动作生成网络
+        # Concatenate MLP output with hidden state and pass to action generation network
         combined_input = torch.cat((self.hidden, mlp_output), dim=1)
 
-        # 计算损失项
+        # SHEAF THEORY: Calculate sheaf section consistency loss
+        # The consistency constraint requires that neighboring agents (connected in comm_mask)
+        # have similar section values. This loss penalizes inconsistencies.
         sheaf_section_loss = torch.zeros(num_agents, dtype=torch.float32)
 
         for i in range(num_agents):
-            # 获取第 i 个智能体的邻域智能体索引
+            # Get the neighbor agent indices (agents that can communicate with agent i)
             neighbors = comm_mask[i].nonzero(as_tuple=True)[0]
 
-            # 如果没有邻域智能体，则跳过
+            # If there are no neighbor agents, skip (no consistency constraint to enforce)
             if len(neighbors) == 0:
                 continue
 
-            # 第 i 个智能体的 mlp_output
+            # Agent i's sheaf section (scalar value from MLP)
             output_i = mlp_output[i]
 
-            # 初始化当前智能体的 L2 损失值
+            # Initialize the consistency loss for agent i
             loss = 0.0
 
-            # 计算第 i 个智能体与其邻域智能体的 L2 损失值
+            # For each neighbor j, compute MSE between agent i's section and agent j's section
+            # This enforces that neighboring agents have similar sections (sheaf consistency)
             for j in neighbors:
                 output_j = mlp_output[j]
-                loss += torch.nn.functional.mse_loss(output_i, output_j, reduction='sum')
+                loss += torch.nn.functional.mse_loss(
+                    output_i, output_j, reduction="sum"
+                )
 
-            # 计算平均损失
+            # Average the loss over all neighbors
             sheaf_section_loss[i] = loss / len(neighbors)
 
         if configs.Advantage_all:
@@ -240,7 +284,14 @@ class Network(nn.Module):
         # state_val = self.state(self.hidden)
         sheaf_section_loss = sheaf_section_loss.unsqueeze(1)
         if configs.Sec_cons:
-            q_val = state_val - self.lambdas * sheaf_section_loss + adv_val - adv_val.mean(1, keepdim=True)
+            # Subtract sheaf section loss from Q-value: agents with inconsistent sections
+            # (different from neighbors) get lower Q-values, encouraging coordination
+            q_val = (
+                state_val
+                - self.lambdas * sheaf_section_loss
+                + adv_val
+                - adv_val.mean(1, keepdim=True)
+            )
         else:
             q_val = state_val + adv_val - adv_val.mean(1, keepdim=True)
 
@@ -254,7 +305,7 @@ class Network(nn.Module):
 
         latent = self.obs_encoder(obs)
 
-        # MLP 输出
+        # MLP output
         mlp_output = self.mlp(latent)
 
         if self.hidden is None:
@@ -267,12 +318,14 @@ class Network(nn.Module):
 
         # masks for communication block
         agents_pos = pos
-        pos_mat = (agents_pos.unsqueeze(1)-agents_pos.unsqueeze(0)).abs()
-        dist_mat = (pos_mat[:,:,0]**2+pos_mat[:,:,1]**2).sqrt()
+        pos_mat = (agents_pos.unsqueeze(1) - agents_pos.unsqueeze(0)).abs()
+        dist_mat = (pos_mat[:, :, 0] ** 2 + pos_mat[:, :, 1] ** 2).sqrt()
         # mask out agents that out of range of FOV
-        in_obs_mask = (pos_mat<=configs.obs_radius).all(2)
+        in_obs_mask = (pos_mat <= configs.obs_radius).all(2)
         # mask out agents that are far away
-        _, ranking = dist_mat.topk(min(self.max_comm_agents, num_agents), dim=1, largest=False)
+        _, ranking = dist_mat.topk(
+            min(self.max_comm_agents, num_agents), dim=1, largest=False
+        )
         dist_mask = torch.zeros((num_agents, num_agents), dtype=torch.bool)
         dist_mask.scatter_(1, ranking, True)
 
@@ -281,32 +334,34 @@ class Network(nn.Module):
         self.hidden = self.comm(self.hidden, comm_mask)
         self.hidden = self.hidden.squeeze(0)
 
-        # 将 MLP 输出与隐藏状态拼接，传递给动作生成网络
+        # Concatenate MLP output with hidden state and pass to action generation network
         combined_input = torch.cat((self.hidden, mlp_output), dim=1)
 
-        # 计算损失项
+        # Calculate loss term
         sheaf_section_loss = torch.zeros(num_agents, dtype=torch.float32)
 
         for i in range(num_agents):
-            # 获取第 i 个智能体的邻域智能体索引
+            # Get the neighbor agent indices of the i-th agent
             neighbors = comm_mask[i].nonzero(as_tuple=True)[0]
 
-            # 如果没有邻域智能体，则跳过
+            # If there are no neighbor agents, skip
             if len(neighbors) == 0:
                 continue
 
-            # 第 i 个智能体的 mlp_output
+            # The mlp_output of the i-th agent
             output_i = mlp_output[i]
 
-            # 初始化当前智能体的 L2 损失值
+            # Initialize the L2 loss value of the current agent
             loss = 0.0
 
-            # 计算第 i 个智能体与其邻域智能体的 L2 损失值
+            # Calculate the L2 loss value between the i-th agent and its neighbor agents
             for j in neighbors:
                 output_j = mlp_output[j]
-                loss += torch.nn.functional.mse_loss(output_i, output_j, reduction='sum')
+                loss += torch.nn.functional.mse_loss(
+                    output_i, output_j, reduction="sum"
+                )
 
-            # 计算平均损失
+            # Calculate average loss
             sheaf_section_loss[i] = loss / len(neighbors)
 
         if configs.Advantage_all:
@@ -318,18 +373,29 @@ class Network(nn.Module):
         # state_val = self.state(self.hidden)
         sheaf_section_loss = sheaf_section_loss.unsqueeze(1)
         if configs.Sec_cons:
-            q_val = state_val - self.lambdas * sheaf_section_loss + adv_val - adv_val.mean(1, keepdim=True)
+            q_val = (
+                state_val
+                - self.lambdas * sheaf_section_loss
+                + adv_val
+                - adv_val.mean(1, keepdim=True)
+            )
         else:
             q_val = state_val + adv_val - adv_val.mean(1, keepdim=True)
 
         actions = torch.argmax(q_val, 1).tolist()
 
-        return actions, q_val.numpy(), self.hidden.numpy(), comm_mask.numpy(), sheaf_section_loss.mean().numpy()
+        return (
+            actions,
+            q_val.numpy(),
+            self.hidden.numpy(),
+            comm_mask.numpy(),
+            sheaf_section_loss.mean().numpy(),
+        )
 
     def reset(self):
         self.hidden = None
 
-    @autocast()
+    @autocast(device_type="cuda")
     def forward(self, obs, steps, hidden, comm_mask):
         # comm_mask shape: batch_size x seq_len x max_num_agents x max_num_agents
         max_steps = obs.size(1)
@@ -343,11 +409,19 @@ class Network(nn.Module):
 
         latent = self.obs_encoder(obs)
 
-        # MLP 输出
-        mlp_output = self.mlp(latent) # [17280, 2]
+        # MLP output
+        mlp_output = self.mlp(latent)  # [17280, 2]
 
-        latent = latent.view(configs.batch_size*num_agents, max_steps, self.latent_dim).transpose(0, 1) # [18, 960, 784] latent i shape: torch.Size([960, 784])
-        mlp_output = mlp_output.view(configs.batch_size * num_agents, max_steps, self.mlp_dim).transpose(0, 1) # [18, 960, 2]
+        latent = latent.view(
+            configs.batch_size * num_agents, max_steps, self.latent_dim
+        ).transpose(
+            0, 1
+        )  # [18, 960, 784] latent i shape: torch.Size([960, 784])
+        mlp_output = mlp_output.view(
+            configs.batch_size * num_agents, max_steps, self.mlp_dim
+        ).transpose(
+            0, 1
+        )  # [18, 960, 2]
 
         hidden_buffer = []
         mlp_output_buffer = []
@@ -355,54 +429,74 @@ class Network(nn.Module):
             # hidden size: batch_size*num_agents x self.hidden_dim
             # [960, 256]
             hidden = self.recurrent(latent[i], hidden)
-            hidden = hidden.view(configs.batch_size, num_agents, self.hidden_dim) # [192, 5, 256]
-            mlp_tmp = mlp_output[i].view(configs.batch_size, num_agents, self.mlp_dim) # [192, 5, 2]
+            hidden = hidden.view(
+                configs.batch_size, num_agents, self.hidden_dim
+            )  # [192, 5, 256]
+            mlp_tmp = mlp_output[i].view(
+                configs.batch_size, num_agents, self.mlp_dim
+            )  # [192, 5, 2]
             hidden = self.comm(hidden, comm_mask[:, i])
             # only hidden from agent 0
-            hidden_buffer.append(hidden[:, 0]) # hidden[:, 0] [192, 256]
+            hidden_buffer.append(hidden[:, 0])  # hidden[:, 0] [192, 256]
             mlp_output_buffer.append(mlp_tmp[:, 0])
-            hidden = hidden.view(configs.batch_size*num_agents, self.hidden_dim)
+            hidden = hidden.view(configs.batch_size * num_agents, self.hidden_dim)
 
         # hidden buffer size: batch_size x seq_len x self.hidden_dim
-        hidden_buffer = torch.stack(hidden_buffer).transpose(0, 1) # hidden_buffer shape: torch.Size([192, 18, 256])
+        hidden_buffer = torch.stack(hidden_buffer).transpose(
+            0, 1
+        )  # hidden_buffer shape: torch.Size([192, 18, 256])
 
         # hidden size: batch_size x self.hidden_dim
-        hidden = hidden_buffer[torch.arange(configs.batch_size), steps-1] # hidden shape: torch.Size([192, 256])
+        hidden = hidden_buffer[
+            torch.arange(configs.batch_size), steps - 1
+        ]  # hidden shape: torch.Size([192, 256])
 
-        # 重新调整 mlp_output 的形状以匹配 hidden
-        mlp_output_buffer= torch.stack(mlp_output_buffer).transpose(0, 1)
-        mlp_output_q = mlp_output_buffer[torch.arange(configs.batch_size), steps-1] # mlp_output shape: torch.Size([192, 2])
+        # Reshape mlp_output to match hidden
+        mlp_output_buffer = torch.stack(mlp_output_buffer).transpose(0, 1)
+        mlp_output_q = mlp_output_buffer[
+            torch.arange(configs.batch_size), steps - 1
+        ]  # mlp_output shape: torch.Size([192, 2])
 
-        # 将 MLP 输出与隐藏状态拼接，传递给动作生成网络
+        # Concatenate MLP output with hidden state and pass to action generation network
         combined_input = torch.cat((hidden, mlp_output_q), dim=1)
 
-        # 计算损失项
-        sheaf_section_loss = torch.zeros(configs.batch_size, num_agents, dtype=torch.float32)
+        # Calculate loss term
+        sheaf_section_loss = torch.zeros(
+            configs.batch_size, num_agents, dtype=torch.float32
+        )
 
-        mlp_q = mlp_output.view(max_steps, configs.batch_size, num_agents, self.mlp_dim)[steps - 1, torch.arange(configs.batch_size)] # torch.Size([192, 5, 2])
+        mlp_q = mlp_output.view(
+            max_steps, configs.batch_size, num_agents, self.mlp_dim
+        )[
+            steps - 1, torch.arange(configs.batch_size)
+        ]  # torch.Size([192, 5, 2])
         # comm_mask shape:torch.Size([192, 18, 5, 5])
-        comm_q = comm_mask[torch.arange(configs.batch_size), steps - 1] # [192, 5, 5]
+        comm_q = comm_mask[torch.arange(configs.batch_size), steps - 1]  # [192, 5, 5]
         for b in range(configs.batch_size):
             for i in range(num_agents):
-                # 获取第 i 个智能体的邻域智能体索引
-                neighbors = comm_q[b, i].nonzero(as_tuple=True)[0] # comm_tmpbishape:torch.Size([5])s
+                # Get the neighbor agent indices of the i-th agent
+                neighbors = comm_q[b, i].nonzero(as_tuple=True)[
+                    0
+                ]  # comm_tmpbishape:torch.Size([5])s
 
-                # 如果没有邻域智能体，则跳过
+                # If there are no neighbor agents, skip
                 if len(neighbors) == 0:
                     continue
 
-                # 第 i 个智能体的 mlp_output
+                # The mlp_output of the i-th agent
                 output_i = mlp_q[b, i]
 
-                # 初始化当前智能体的 L2 损失值
+                # Initialize the L2 loss value of the current agent
                 loss = 0.0
 
-                # 计算第 i 个智能体与其邻域智能体的 L2 损失值
+                # Calculate the L2 loss value between the i-th agent and its neighbor agents
                 for j in neighbors:
                     output_j = mlp_q[b, j]
-                    loss += torch.nn.functional.mse_loss(output_i, output_j, reduction='sum')
+                    loss += torch.nn.functional.mse_loss(
+                        output_i, output_j, reduction="sum"
+                    )
 
-                # 计算平均损失
+                # Calculate average loss
                 sheaf_section_loss[b, i] = loss / len(neighbors)
 
         if configs.Advantage_all:
@@ -415,10 +509,13 @@ class Network(nn.Module):
         sheaf_section_loss = sheaf_section_loss.unsqueeze(1).to(torch.device("cuda"))
         # wandb.log({"sheaf_section_loss": sheaf_section_loss})
         if configs.Sec_cons:
-            q_val = state_val - self.lambdas * sheaf_section_loss + adv_val - adv_val.mean(1, keepdim=True)
+            q_val = (
+                state_val
+                - self.lambdas * sheaf_section_loss
+                + adv_val
+                - adv_val.mean(1, keepdim=True)
+            )
         else:
             q_val = state_val + adv_val - adv_val.mean(1, keepdim=True)
 
         return q_val
-
-

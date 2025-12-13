@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 plt.ion()
 from matplotlib import colors
 import configs
-from map_generator import house_generator
+from map_tools.map_generator import house_generator
 
 
 action_list = np.array([[0, 0],[-1, 0],[1, 0],[0, -1],[0, 1]], dtype=np.int)
@@ -89,7 +89,7 @@ class Environment:
             self.fix_density = True
             self.obstacle_density = fix_density
 
-        if configs.test_senario == 'house':
+        if configs.test_scenario == 'house':
             # Generate the map using house_generator
             self.map, _ = house_generator(env_size=self.map_size[0])
         else:
@@ -99,7 +99,7 @@ class Environment:
         partition_list = [ partition for partition in partition_list if len(partition) >= 2 ]
 
         while len(partition_list) == 0:
-            if configs.test_senario == 'house':
+            if configs.test_scenario == 'house':
             # Generate the map using house_generator
                 self.map, _ = house_generator(env_size=self.map_size[0])
             else:
@@ -161,7 +161,7 @@ class Environment:
         if not self.fix_density:
             self.obstacle_density = np.random.triangular(0, 0.33, 0.5)
         
-        if configs.test_senario == 'house':
+        if configs.test_scenario == 'house':
             # Generate the map using house_generator
             self.map, _ = house_generator(env_size=self.map_size[0])
         else:
@@ -171,7 +171,7 @@ class Environment:
         partition_list = [ partition for partition in partition_list if len(partition) >= 2 ]
 
         while len(partition_list) == 0:
-            if configs.test_senario == 'house':
+            if configs.test_scenario == 'house':
                 # Generate the map using house_generator
                 self.map, _ = house_generator(env_size=self.map_size[0])
             else:
