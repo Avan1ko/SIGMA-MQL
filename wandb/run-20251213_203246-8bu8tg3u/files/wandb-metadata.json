@@ -1,0 +1,40 @@
+{
+  "os":  "Linux-6.14.0-1016-aws-x86_64-with-glibc2.39",
+  "python":  "CPython 3.12.10",
+  "startedAt":  "2025-12-13T20:32:46.583790Z",
+  "program":  "/home/ubuntu/SIGMA-MQL/train.py",
+  "codePath":  "train.py",
+  "codePathLocal":  "train.py",
+  "git":  {
+    "remote":  "git@github.com:Avan1ko/SIGMA-MQL.git",
+    "commit":  "d9403d12684a5356f52e688c42e50f0b7051c766"
+  },
+  "email":  "song_zj@hotmail.com",
+  "root":  "/home/ubuntu/SIGMA-MQL",
+  "host":  "ip-172-31-40-225",
+  "executable":  "/opt/pytorch/bin/python",
+  "cpu_count":  4,
+  "cpu_count_logical":  8,
+  "gpu":  "NVIDIA L40S",
+  "gpu_count":  1,
+  "disk":  {
+    "/":  {
+      "total":  "40483942400",
+      "used":  "31776751616"
+    }
+  },
+  "memory":  {
+    "total":  "66507833344"
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA L40S",
+      "memoryTotal":  "48305799168",
+      "cudaCores":  18176,
+      "architecture":  "Ada",
+      "uuid":  "GPU-15350312-44e2-ffb8-d730-235c87d1c06c"
+    }
+  ],
+  "cudaVersion":  "13.0",
+  "writerId":  "k77l7e8jpjfd55m9el4x2zvgc8oir1be"
+}

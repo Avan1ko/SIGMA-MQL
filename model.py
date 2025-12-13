@@ -71,7 +71,7 @@ class MultiHeadAttention(nn.Module):
         assert attn_mask.size() == (batch_size, self.num_heads, num_agents, num_agents)
 
         # context: [batch_size x num_heads x num_agents x output_dim]
-        with autocast(device_type=configs.device, enabled=False):
+        with autocast(device_type=configs.device.type, enabled=False):
             scores = torch.matmul(q_s.float(), k_s.float().transpose(-1, -2)) / (self.output_dim**0.5) # scores : [batch_size x n_heads x num_agents x num_agents]
             scores.masked_fill_(attn_mask, -1e9) # Fills elements of self tensor with value where mask is one.
             attn = F.softmax(scores, dim=-1)
@@ -390,7 +390,7 @@ class Network(nn.Module):
     def reset(self):
         self.hidden = None
 
-    @autocast(device_type=configs.device)
+    @autocast(device_type=configs.device.type)
     def forward(self, obs, steps, hidden, comm_mask):
         # comm_mask shape: batch_size x seq_len x max_num_agents x max_num_agents
         max_steps = obs.size(1)

@@ -79,14 +79,7 @@ def calculate_ray_resources(desired_num_actors=20):
         if cpus_per_actor < 0.25:
             cpus_per_actor = 0.25
             actual_num_actors = int(available_for_actors / cpus_per_actor)
-    
-    print(f"Ray resource allocation:")
-    print(f"  Total CPUs: {total_cpus}")
-    print(f"  GlobalBuffer: {cpus_per_buffer} CPU")
-    print(f"  Learner: {cpus_per_learner} CPU")
-    print(f"  Actors: {actual_num_actors} × {cpus_per_actor:.2f} CPU = {actual_num_actors * cpus_per_actor:.2f} CPUs")
-    print(f"  Total allocated: {reserved_cpus + actual_num_actors * cpus_per_actor:.2f} CPUs")
-    
+
     return actual_num_actors, cpus_per_actor, cpus_per_buffer, cpus_per_learner
 
 # Auto-configure threads for main process (only if not already set)
@@ -94,11 +87,7 @@ def calculate_ray_resources(desired_num_actors=20):
 if "OMP_NUM_THREADS" not in os.environ:
     configure_threads(for_ray_actor=False)
 
-############################################################
-####################    environment     ####################
-############################################################
-map_length = 50
-num_agents = 10
+# Default environment settings (can be overridden)
 obs_radius = 4
 reward_fn = dict(move=-0.075,
                 stay_on_goal=0,
@@ -109,23 +98,18 @@ reward_fn = dict(move=-0.075,
 obs_shape = (6, 2*obs_radius+1, 2*obs_radius+1)
 action_dim = 5
 
-
-
-############################################################
-####################         DQN        ####################
-############################################################
-
-# basic training setting
+# Basic training settings
 num_actors = 20  # Desired number of actors (will be auto-adjusted based on available CPUs)
 log_interval = 10
-training_times = 600000
-save_interval=2000
-gamma=0.99
-batch_size=192
-learning_starts=50000
-target_network_update_freq=2000
-save_path='./models'
-max_episode_length = 256  # Reduced for 15x15 maps (increase for larger maps)
+training_times = 50000  # Max weight updates per training run
+save_interval = 2000
+gamma = 0.99
+batch_size = 192
+learning_starts = 10000  # Reduced from 50k for faster startup
+target_network_update_freq = 2000
+
+# Episode settings
+max_episode_length = 256
 seq_len = 16
 load_model = False
 load_path = './models/save_model/model_house/84000_house.pth'
@@ -133,9 +117,6 @@ load_path = './models/save_model/model_house/84000_house.pth'
 Advantage_all = True
 Sec_cons = True
 lambdas = 0.001
-
-max_episode_length = max_episode_length
-
 actor_update_steps = 400
 
 # gradient norm clipping
@@ -151,19 +132,19 @@ episode_capacity = 2048
 prioritized_replay_alpha=0.6
 prioritized_replay_beta=0.4
 
-# Fixed training settings (change these to scale up later)
-init_env_settings = (3, 15)  # num_agents, map_length
-max_num_agents = 3  # Keep same as init for fixed training (increase later if needed)
-max_map_length = 15  # Keep same as init for fixed training (increase later if needed)
+# Fixed training settings (for curriculum learning, set max_num_agents and max_map_length higher)
+max_num_agents = 3  # Keep same for fixed training (increase for curriculum)
+max_map_length = 15  # Keep same for fixed training (increase for curriculum)
 pass_rate = 0.9  # Only used if curriculum learning enabled
+
 # dqn network setting
 cnn_channel = 128
 hidden_dim = 256
 
-# communication (must be >= max_num_agents)
-max_comm_agents = 5  # Set to >= max_num_agents (currently 3, but 5 allows room for growth)
+# Communication (must be >= max_num_agents)
+max_comm_agents = 5  # Set to >= max_num_agents
 
-# communication block
+# Communication block
 num_comm_layers = 2
 num_comm_heads = 2
 
@@ -171,23 +152,35 @@ num_comm_heads = 2
 # This must be called after num_actors is defined
 ray_num_actors, ray_cpus_per_actor, ray_cpus_per_buffer, ray_cpus_per_learner = calculate_ray_resources(desired_num_actors=num_actors)
 
-test_seed = 0
-num_test_cases = 200
-
 ############################################################
 ####################  Map Type Settings ####################
 ############################################################
 
+# All available map types
+map_types = ['house', 'maze', 'warehouse', 'tunnels', 'random']
+
 # TRAINING: Map type to train on (change this for each training run)
 # Options: 'house', 'maze', 'random', 'tunnels', 'warehouse'
-train_map_type = 'random' 
+train_map_type = 'random'
 
 # TESTING: Map type for evaluation (independent of training)
 test_scenario = 'house'  # Used during test.py evaluation
 
+# Save path (can be overridden in training scripts)
+save_path = './models'
+
+############################################################
+####################    Evaluation      ####################
+############################################################
+
+test_seed = 0
+num_test_cases = 200
+
+# Test settings: (map_length, num_agents, density)
+# Default test settings for evaluation
 test_env_settings = ((40, 4, 0.3), (40, 8, 0.3), (40, 16, 0.3), (40, 32, 0.3), (40, 64, 0.3), (40, 128, 0.3),
-                    (80, 4, 0.3), (80, 8, 0.3), (80, 16, 0.3), (80, 32, 0.3), (80, 64, 0.3), (80, 128, 0.3)) # map length, number of agents, density
-# house_test_env_settings = ((40, 4, 0.3), (40, 8, 0.3), (40, 16, 0.3), (40, 32, 0.3), (40, 64, 0.3),
-#                     (60, 4, 0.3), (60, 8, 0.3), (60, 16, 0.3), (60, 32, 0.3), (60, 64, 0.3)) # map length, number of agents, density
+                    (80, 4, 0.3), (80, 8, 0.3), (80, 16, 0.3), (80, 32, 0.3), (80, 64, 0.3), (80, 128, 0.3))
+
+# House-specific test settings
 house_test_env_settings = ((40, 4, 0.3), (40, 8, 0.3), (40, 16, 0.3), (40, 32, 0.3), (40, 64, 0.3), (40, 128, 0.3),
                     (60, 4, 0.3), (60, 8, 0.3), (60, 16, 0.3), (60, 32, 0.3), (60, 64, 0.3), (60, 128, 0.3))

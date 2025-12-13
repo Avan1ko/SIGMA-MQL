@@ -1,0 +1,151 @@
+2025-12-13 20:32:52,300	INFO worker.py:2023 -- Started a local Ray instance.
+/opt/pytorch/lib/python3.12/site-packages/ray/_private/worker.py:2062: FutureWarning: Tip: In future versions of Ray, Ray will no longer override accelerator visible devices env var if num_gpus=0 or num_gpus=None (default). To enable this behavior and turn off this error message, set RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO=0
+  warnings.warn(
+[36m(pid=5386)[0m Ray resource allocation:
+[36m(pid=5386)[0m   Total CPUs: 8
+[36m(pid=5386)[0m   GlobalBuffer: 1 CPU
+[36m(pid=5386)[0m   Learner: 1 CPU
+[36m(pid=5386)[0m   Actors: 20 × 0.30 CPU = 6.00 CPUs
+[36m(pid=5386)[0m   Total allocated: 8.00 CPUs
+[36m(pid=5388)[0m Ray resource allocation:[32m [repeated 4x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/user-guides/configure-logging.html#log-deduplication for more options.)[0m
+[36m(pid=5388)[0m   Total CPUs: 8[32m [repeated 4x across cluster][0m
+[36m(pid=5388)[0m   GlobalBuffer: 1 CPU[32m [repeated 4x across cluster][0m
+[36m(pid=5388)[0m   Learner: 1 CPU[32m [repeated 4x across cluster][0m
+[36m(pid=5388)[0m   Actors: 20 × 0.30 CPU = 6.00 CPUs[32m [repeated 4x across cluster][0m
+[36m(pid=5388)[0m   Total allocated: 8.00 CPUs[32m [repeated 4x across cluster][0m
+[36m(GlobalBuffer pid=5386)[0m buffer update speed: 0.0/s
+[36m(GlobalBuffer pid=5386)[0m buffer size: 0
+[36m(GlobalBuffer pid=5386)[0m      15
+[36m(GlobalBuffer pid=5386)[0m  3   0/0
+[36m(pid=6121)[0m Ray resource allocation:[32m [repeated 17x across cluster][0m
+[36m(pid=6121)[0m   Total CPUs: 8[32m [repeated 17x across cluster][0m
+[36m(pid=6121)[0m   GlobalBuffer: 1 CPU[32m [repeated 17x across cluster][0m
+[36m(pid=6121)[0m   Learner: 1 CPU[32m [repeated 17x across cluster][0m
+[36m(pid=6121)[0m   Actors: 20 × 0.30 CPU = 6.00 CPUs[32m [repeated 17x across cluster][0m
+[36m(pid=6121)[0m   Total allocated: 8.00 CPUs[32m [repeated 17x across cluster][0m
+[36m(Learner pid=5383)[0m number of updates: 0
+[36m(Learner pid=5383)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=5386)[0m buffer update speed: 0.0/s
+[36m(GlobalBuffer pid=5386)[0m buffer size: 0
+[36m(GlobalBuffer pid=5386)[0m      15
+[36m(GlobalBuffer pid=5386)[0m  3   0/0
+[36m(Learner pid=5383)[0m number of updates: 0
+[36m(Learner pid=5383)[0m update speed: 0.0/s
+[36m(pid=gcs_server)[0m [2025-12-13 20:33:18,234 E 5136 5136] (gcs_server) gcs_server.cc:303: Failed to establish connection to the event+metrics exporter agent. Events and metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
+[36m(GlobalBuffer pid=5386)[0m buffer update speed: 921.6/s
+[36m(GlobalBuffer pid=5386)[0m buffer size: 4608
+[36m(GlobalBuffer pid=5386)[0m      15
+[36m(GlobalBuffer pid=5386)[0m  3   0/18
+[36m(Learner pid=5383)[0m number of updates: 0
+[36m(Learner pid=5383)[0m update speed: 0.0/s
+[33m(raylet)[0m [2025-12-13 20:33:21,388 E 5308 5308] (raylet) main.cc:979: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
+[36m(GlobalBuffer pid=5386)[0m [2025-12-13 20:33:24,492 E 5386 5518] core_worker_process.cc:837: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14
+[36m(GlobalBuffer pid=5386)[0m buffer update speed: 614.4/s
+[36m(GlobalBuffer pid=5386)[0m buffer size: 7680
+[36m(GlobalBuffer pid=5386)[0m      15
+[36m(GlobalBuffer pid=5386)[0m  3   0/30
+[36m(Learner pid=5383)[0m number of updates: 0
+[36m(Learner pid=5383)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=5386)[0m buffer update speed: 665.6/s
+[36m(GlobalBuffer pid=5386)[0m buffer size: 11008
+[36m(GlobalBuffer pid=5386)[0m      15
+[36m(GlobalBuffer pid=5386)[0m  3   0/43
+[36m(Learner pid=5383)[0m number of updates: 0
+[36m(Learner pid=5383)[0m update speed: 0.0/s
+[36m(Actor pid=5968)[0m [2025-12-13 20:33:30,842 E 5968 6324] core_worker_process.cc:837: Failed to establish connection to the metrics exporter agent. Metrics will not be exported. Exporter agent status: RpcError: Running out of retries to initialize the metrics agent. rpc_code: 14[32m [repeated 16x across cluster][0m
+[36m(GlobalBuffer pid=5386)[0m buffer update speed: 665.6/s
+[36m(GlobalBuffer pid=5386)[0m buffer size: 14336
+[36m(GlobalBuffer pid=5386)[0m      15
+[36m(GlobalBuffer pid=5386)[0m  3   0/56
+[36m(Learner pid=5383)[0m number of updates: 0
+[36m(Learner pid=5383)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=5386)[0m buffer update speed: 665.6/s
+[36m(GlobalBuffer pid=5386)[0m buffer size: 17664
+[36m(GlobalBuffer pid=5386)[0m      15
+[36m(GlobalBuffer pid=5386)[0m  3   0/69
+[36m(Learner pid=5383)[0m number of updates: 0
+[36m(Learner pid=5383)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=5386)[0m buffer update speed: 716.8/s
+[36m(GlobalBuffer pid=5386)[0m buffer size: 21248
+[36m(GlobalBuffer pid=5386)[0m      15
+[36m(GlobalBuffer pid=5386)[0m  3   0/83
+[36m(Learner pid=5383)[0m number of updates: 0
+[36m(Learner pid=5383)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=5386)[0m buffer update speed: 819.2/s
+[36m(GlobalBuffer pid=5386)[0m buffer size: 25344
+[36m(GlobalBuffer pid=5386)[0m      15
+[36m(GlobalBuffer pid=5386)[0m  3   0/99
+[36m(Learner pid=5383)[0m number of updates: 0
+[36m(Learner pid=5383)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=5386)[0m buffer update speed: 716.8/s
+[36m(GlobalBuffer pid=5386)[0m buffer size: 28928
+[36m(GlobalBuffer pid=5386)[0m      15
+[36m(GlobalBuffer pid=5386)[0m  3   0/113
+[36m(Learner pid=5383)[0m number of updates: 0
+[36m(Learner pid=5383)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=5386)[0m buffer update speed: 563.2/s
+[36m(GlobalBuffer pid=5386)[0m buffer size: 31744
+[36m(GlobalBuffer pid=5386)[0m      15
+[36m(GlobalBuffer pid=5386)[0m  3   0/124
+[36m(Learner pid=5383)[0m number of updates: 0
+[36m(Learner pid=5383)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=5386)[0m buffer update speed: 768.0/s
+[36m(GlobalBuffer pid=5386)[0m buffer size: 35584
+[36m(GlobalBuffer pid=5386)[0m      15
+[36m(GlobalBuffer pid=5386)[0m  3   0/139
+[36m(Learner pid=5383)[0m number of updates: 0
+[36m(Learner pid=5383)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=5386)[0m buffer update speed: 768.0/s
+[36m(GlobalBuffer pid=5386)[0m buffer size: 39424
+[36m(GlobalBuffer pid=5386)[0m      15
+[36m(GlobalBuffer pid=5386)[0m  3   0/154
+[36m(Learner pid=5383)[0m number of updates: 0
+[36m(Learner pid=5383)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=5386)[0m buffer update speed: 665.6/s
+[36m(GlobalBuffer pid=5386)[0m buffer size: 42752
+[36m(GlobalBuffer pid=5386)[0m      15
+[36m(GlobalBuffer pid=5386)[0m  3   0/167
+[36m(Learner pid=5383)[0m number of updates: 0
+[36m(Learner pid=5383)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=5386)[0m buffer update speed: 716.8/s
+[36m(GlobalBuffer pid=5386)[0m buffer size: 46336
+[36m(GlobalBuffer pid=5386)[0m      15
+[36m(GlobalBuffer pid=5386)[0m  3   0/181
+[36m(Learner pid=5383)[0m number of updates: 0
+[36m(Learner pid=5383)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=5386)[0m buffer update speed: 665.6/s
+[36m(GlobalBuffer pid=5386)[0m buffer size: 49664
+[36m(GlobalBuffer pid=5386)[0m      15
+[36m(GlobalBuffer pid=5386)[0m  3   0/194
+[36m(Learner pid=5383)[0m number of updates: 0
+[36m(Learner pid=5383)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=5386)[0m buffer update speed: 614.4/s
+[36m(GlobalBuffer pid=5386)[0m buffer size: 52736
+[36m(GlobalBuffer pid=5386)[0m      15
+[36m(GlobalBuffer pid=5386)[0m  3   0/200
+[36m(Learner pid=5383)[0m number of updates: 0
+[36m(Learner pid=5383)[0m update speed: 0.0/s
+start training
+[36m(GlobalBuffer pid=5386)[0m no prepared data
+[36m(Learner pid=5383)[0m number of updates: 1
+[36m(Learner pid=5383)[0m update speed: 0.1/s
+[36m(Learner pid=5383)[0m loss: 0.2689
+
+[36m(GlobalBuffer pid=5386)[0m buffer update speed: 640.0/s
+[36m(GlobalBuffer pid=5386)[0m buffer size: 59136
+[36m(GlobalBuffer pid=5386)[0m      15
+[36m(GlobalBuffer pid=5386)[0m  3   0/200
+Traceback (most recent call last):
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 54, in <module>
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 43, in main
+    learner = Learner.remote(buffer)
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 54, in <module>
+
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 43, in main
+    learner = Learner.remote(buffer)
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+[0m
