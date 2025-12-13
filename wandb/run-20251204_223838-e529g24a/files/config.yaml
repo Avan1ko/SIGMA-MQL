@@ -1,0 +1,49 @@
+_wandb:
+    value:
+        cli_version: 0.23.1
+        e:
+            6zvat9t192fitacw1pw4ihgqas7a2bsv:
+                codePath: train.py
+                codePathLocal: train.py
+                cpu_count: 2
+                cpu_count_logical: 4
+                cudaVersion: "13.0"
+                disk:
+                    /:
+                        total: "40483942400"
+                        used: "31623364608"
+                email: song_zj@hotmail.com
+                executable: /opt/pytorch/bin/python
+                git:
+                    commit: 08278a5c79a2aef1f72b2e9c5cb762f8786d3f26
+                    remote: git@github.com:Avan1ko/SIGMA-MQL.git
+                gpu: NVIDIA L4
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ada
+                      cudaCores: 7424
+                      memoryTotal: "24152899584"
+                      name: NVIDIA L4
+                      uuid: GPU-e02d1908-f21e-5bf5-d6dd-9067b262dd08
+                host: ip-172-31-40-225
+                memory:
+                    total: "16114774016"
+                os: Linux-6.14.0-1016-aws-x86_64-with-glibc2.39
+                program: /home/ubuntu/SIGMA-MQL/train.py
+                python: CPython 3.12.10
+                root: /home/ubuntu/SIGMA-MQL
+                startedAt: "2025-12-04T22:38:38.683884Z"
+                writerId: 6zvat9t192fitacw1pw4ihgqas7a2bsv
+        m: []
+        python_version: 3.12.10
+        t:
+            "1":
+                - 1
+                - 30
+            "2":
+                - 1
+                - 30
+            "4": 3.12.10
+            "5": 0.23.1
+            "12": 0.23.1
+            "13": linux-x86_64

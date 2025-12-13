@@ -1,0 +1,70 @@
+2025-12-04 22:32:23,405	INFO worker.py:2023 -- Started a local Ray instance.
+/opt/pytorch/lib/python3.12/site-packages/ray/_private/worker.py:2062: FutureWarning: Tip: In future versions of Ray, Ray will no longer override accelerator visible devices env var if num_gpus=0 or num_gpus=None (default). To enable this behavior and turn off this error message, set RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO=0
+  warnings.warn(
+[36m(pid=15206)[0m /home/ubuntu/SIGMA-MQL/model.py:332: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+[36m(pid=15206)[0m   @autocast()
+[36m(pid=15204)[0m /opt/pytorch/lib/python3.12/site-packages/torch/amp/autocast_mode.py:266: UserWarning: User provided device_type of 'cuda', but CUDA is not available. Disabling
+[36m(pid=15204)[0m   warnings.warn(
+[36m(Actor pid=15204)[0m Exception raised in creation task: The actor died because of an error raised in its creation task, [36mray::Actor.__init__()[39m (pid=15204, ip=172.31.40.225, actor_id=2aed11e35ba49bd4e16233f201000000, repr=<worker.Actor object at 0x76acdd4a5820>)
+[36m(Actor pid=15204)[0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[36m(Actor pid=15204)[0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[36m(Actor pid=15204)[0m   File "/home/ubuntu/SIGMA-MQL/worker.py", line 379, in __init__
+[36m(Actor pid=15204)[0m     self.env = Environment(curriculum=True)
+[36m(Actor pid=15204)[0m                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[36m(Actor pid=15204)[0m   File "/home/ubuntu/SIGMA-MQL/environment.py", line 141, in __init__
+[36m(Actor pid=15204)[0m     self.get_heuri_map()
+[36m(Actor pid=15204)[0m   File "/home/ubuntu/SIGMA-MQL/environment.py", line 234, in get_heuri_map
+[36m(Actor pid=15204)[0m     dist_map = np.ones((self.num_agents, *self.map_size), dtype=np.int3232) * 2147483647
+[36m(Actor pid=15204)[0m                                                                 ^^^^^^^^^^
+[36m(Actor pid=15204)[0m   File "/opt/pytorch/lib/python3.12/site-packages/numpy/__init__.py", line 333, in __getattr__
+[36m(Actor pid=15204)[0m     raise AttributeError("module {!r} has no attribute "
+[36m(Actor pid=15204)[0m AttributeError: module 'numpy' has no attribute 'int3232'. Did you mean: 'int32'?
+[36m(pid=15488)[0m /home/ubuntu/SIGMA-MQL/model.py:332: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.[32m [repeated 3x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/user-guides/configure-logging.html#log-deduplication for more options.)[0m
+[36m(pid=15488)[0m   @autocast()[32m [repeated 3x across cluster][0m
+[36m(GlobalBuffer pid=15203)[0m buffer update speed: 0.0/s
+[36m(GlobalBuffer pid=15203)[0m buffer size: 0
+[36m(GlobalBuffer pid=15203)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=15203)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=15203)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=15203)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(Learner pid=15206)[0m number of updates: 0
+[36m(Learner pid=15206)[0m update speed: 0.0/s
+[36m(pid=15595)[0m /opt/pytorch/lib/python3.12/site-packages/torch/amp/autocast_mode.py:266: UserWarning: User provided device_type of 'cuda', but CUDA is not available. Disabling[32m [repeated 4x across cluster][0m
+[36m(pid=15595)[0m   warnings.warn([32m [repeated 4x across cluster][0m
+[36m(Actor pid=15491)[0m Exception raised in creation task: The actor died because of an error raised in its creation task, [36mray::Actor.__init__()[39m (pid=15491, ip=172.31.40.225, actor_id=6224aa7a1ca5e77c5450e07101000000, repr=<worker.Actor object at 0x79ffcff71ca0>)[32m [repeated 3x across cluster][0m
+[36m(Actor pid=15491)[0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[32m [repeated 3x across cluster][0m
+[36m(Actor pid=15491)[0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[32m [repeated 3x across cluster][0m
+[36m(Actor pid=15491)[0m   File "/home/ubuntu/SIGMA-MQL/worker.py", line 379, in __init__[32m [repeated 3x across cluster][0m
+[36m(Actor pid=15491)[0m     self.env = Environment(curriculum=True)[32m [repeated 3x across cluster][0m
+[36m(Actor pid=15491)[0m                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^[32m [repeated 3x across cluster][0m
+[36m(Actor pid=15491)[0m   File "/home/ubuntu/SIGMA-MQL/environment.py", line 141, in __init__[32m [repeated 3x across cluster][0m
+[36m(Actor pid=15491)[0m     self.get_heuri_map()[32m [repeated 3x across cluster][0m
+[36m(Actor pid=15491)[0m   File "/home/ubuntu/SIGMA-MQL/environment.py", line 234, in get_heuri_map[32m [repeated 3x across cluster][0m
+[36m(Actor pid=15491)[0m     dist_map = np.ones((self.num_agents, *self.map_size), dtype=np.int3232) * 2147483647[32m [repeated 3x across cluster][0m
+[36m(Actor pid=15491)[0m                                                                 ^^^^^^^^^^[32m [repeated 3x across cluster][0m
+[36m(Actor pid=15491)[0m   File "/opt/pytorch/lib/python3.12/site-packages/numpy/__init__.py", line 333, in __getattr__[32m [repeated 3x across cluster][0m
+[36m(Actor pid=15491)[0m     raise AttributeError("module {!r} has no attribute "[32m [repeated 3x across cluster][0m
+[36m(Actor pid=15491)[0m AttributeError: module 'numpy' has no attribute 'int3232'. Did you mean: 'int32'?[32m [repeated 3x across cluster][0m
+[36m(GlobalBuffer pid=15203)[0m buffer update speed: 0.0/s
+[36m(GlobalBuffer pid=15203)[0m buffer size: 0
+[36m(GlobalBuffer pid=15203)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=15203)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=15203)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=15203)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(Learner pid=15206)[0m number of updates: 0
+[36m(Learner pid=15206)[0m update speed: 0.0/s
+[36m(pid=15715)[0m /home/ubuntu/SIGMA-MQL/model.py:332: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.[32m [repeated 4x across cluster][0m
+[36m(pid=15715)[0m   @autocast()[32m [repeated 4x across cluster][0m
+Traceback (most recent call last):
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 53, in <module>
+    main()
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 32, in main
+    time.sleep(5)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 53, in <module>
+    main()
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 32, in main
+    time.sleep(5)
+KeyboardInterrupt
+[0m

@@ -1,0 +1,11 @@
+{"time":"2025-12-05T03:24:28.122156793Z","level":"INFO","msg":"stream: starting","core version":"0.23.1"}
+{"time":"2025-12-05T03:24:28.288867666Z","level":"INFO","msg":"stream: created new stream","id":"fkaeavw2"}
+{"time":"2025-12-05T03:24:28.288931977Z","level":"INFO","msg":"handler: started","stream_id":"fkaeavw2"}
+{"time":"2025-12-05T03:24:28.289021359Z","level":"INFO","msg":"stream: started","id":"fkaeavw2"}
+{"time":"2025-12-05T03:24:28.2890566Z","level":"INFO","msg":"writer: started","stream_id":"fkaeavw2"}
+{"time":"2025-12-05T03:24:28.28907261Z","level":"INFO","msg":"sender: started","stream_id":"fkaeavw2"}
+{"time":"2025-12-05T03:47:35.707247884Z","level":"INFO","msg":"stream: closing","id":"fkaeavw2"}
+{"time":"2025-12-05T03:47:35.989876147Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-12-05T03:47:36.093177345Z","level":"INFO","msg":"handler: closed","stream_id":"fkaeavw2"}
+{"time":"2025-12-05T03:47:36.093451491Z","level":"INFO","msg":"sender: closed","stream_id":"fkaeavw2"}
+{"time":"2025-12-05T03:47:36.093478031Z","level":"INFO","msg":"stream: closed","id":"fkaeavw2"}

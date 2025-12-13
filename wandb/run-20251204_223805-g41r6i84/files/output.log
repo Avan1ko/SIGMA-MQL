@@ -1,0 +1,86 @@
+2025-12-04 22:38:08,286	INFO worker.py:2023 -- Started a local Ray instance.
+/opt/pytorch/lib/python3.12/site-packages/ray/_private/worker.py:2062: FutureWarning: Tip: In future versions of Ray, Ray will no longer override accelerator visible devices env var if num_gpus=0 or num_gpus=None (default). To enable this behavior and turn off this error message, set RAY_ACCEL_ENV_VAR_OVERRIDE_ON_ZERO=0
+  warnings.warn(
+2025-12-04 22:38:16,195	ERROR worker.py:433 -- Unhandled error (suppress with 'RAY_IGNORE_UNHANDLED_ERRORS=1'): [36mray::Actor.run()[39m (pid=21896, ip=172.31.40.225, actor_id=2acc3d51b59894c7ffdc5c2701000000, repr=<worker.Actor object at 0x7a10edf8d310>)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/SIGMA-MQL/worker.py", line 393, in run
+    actions, q_val, hidden, comm_mask = self.model.step(torch.from_numpy(obs.astype(np.float32)), torch.from_numpy(pos.astype(np.float32)))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/SIGMA-MQL/model.py", line 205, in step
+    self.hidden = self.comm(self.hidden, comm_mask)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/SIGMA-MQL/model.py", line 105, in forward
+    info = self.self_attn(latent, attn_mask=attn_mask)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/SIGMA-MQL/model.py", line 61, in forward
+    with autocast(enabled=False):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: autocast.__init__() missing 1 required positional argument: 'device_type'
+2025-12-04 22:38:16,233	ERROR worker.py:433 -- Unhandled error (suppress with 'RAY_IGNORE_UNHANDLED_ERRORS=1'): [36mray::Actor.run()[39m (pid=21893, ip=172.31.40.225, actor_id=80cfd4ad72bfde7b189bb9db01000000, repr=<worker.Actor object at 0x71223a562840>)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/SIGMA-MQL/worker.py", line 393, in run
+    actions, q_val, hidden, comm_mask = self.model.step(torch.from_numpy(obs.astype(np.float32)), torch.from_numpy(pos.astype(np.float32)))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/SIGMA-MQL/model.py", line 205, in step
+    self.hidden = self.comm(self.hidden, comm_mask)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/SIGMA-MQL/model.py", line 105, in forward
+    info = self.self_attn(latent, attn_mask=attn_mask)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pytorch/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/SIGMA-MQL/model.py", line 61, in forward
+    with autocast(enabled=False):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: autocast.__init__() missing 1 required positional argument: 'device_type'
+[36m(Learner pid=21894)[0m number of updates: 0
+[36m(Learner pid=21894)[0m update speed: 0.0/s
+[36m(GlobalBuffer pid=21895)[0m buffer update speed: 0.0/s
+[36m(GlobalBuffer pid=21895)[0m buffer size: 0
+[36m(GlobalBuffer pid=21895)[0m      10      15      20      25      30      35      40
+[36m(GlobalBuffer pid=21895)[0m  3   0/0     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=21895)[0m  4   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+[36m(GlobalBuffer pid=21895)[0m  5   N/A     N/A     N/A     N/A     N/A     N/A     N/A
+Traceback (most recent call last):
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 53, in <module>
+    main()
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 32, in main
+    time.sleep(5)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 53, in <module>
+    main()
+  File "/home/ubuntu/SIGMA-MQL/train.py", line 32, in main
+    time.sleep(5)
+KeyboardInterrupt
+[0m

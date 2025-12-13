@@ -310,7 +310,15 @@ def make_animation(model_name: int, test_set_name: tuple, test_case_idx: int, st
 
     ani = animation.ArtistAnimation(fig, imgs, interval=600, blit=True, repeat_delay=1000)
 
-    ani.save('videos/{}_{}_{}_{}.mp4'.format(model_name, *test_set_name, test_case_idx))
+    # Try to save as MP4 if ffmpeg is available, otherwise use GIF
+    output_file = 'videos/{}_{}_{}_{}.mp4'.format(model_name, *test_set_name, test_case_idx)
+    try:
+        ani.save(output_file, writer='ffmpeg')
+    except (ValueError, RuntimeError) as e:
+        # Fallback to GIF if ffmpeg is not available
+        output_file = output_file.replace('.mp4', '.gif')
+        ani.save(output_file, writer='pillow')
+        print(f"Note: Saved as GIF instead of MP4 (ffmpeg not available). File: {output_file}")
 
 
 if __name__ == '__main__':
@@ -325,6 +333,6 @@ if __name__ == '__main__':
     # test_model(['502000'])
 
     # visualize result
-    model_name = '84000_house'
+    model_name = '50000'
     test_env_map = 'house_test_set/60length_128agents_0.3density.pth'
     make_animation(model_name, (60, 128), 1, 512, test_env_map)
