@@ -39,7 +39,9 @@ class GlobalBuffer:
 
         self.counter = 0
         self.batched_data = []
-        self.stat_dict = {init_env_settings:[]}
+        self.stat_dict = {init_env_settings:[]}  # Tracks success (done) per env setting
+        self.episode_length_dict = {init_env_settings:[]}  # Tracks episode lengths
+        self.arrival_rate_dict = {init_env_settings:[]}  # Tracks arrival rates
         self.lock = threading.Lock()
         self.env_settings_set = ray.put([init_env_settings])
 
@@ -80,18 +82,31 @@ class GlobalBuffer:
 
     def add(self, data: Tuple):
         '''
-        data: actor_id 0, num_agents 1, map_len 2, obs_buf 3, act_buf 4, rew_buf 5, hid_buf 6, td_errors 7, done 8, size 9, comm_mask 10
+        data: actor_id 0, num_agents 1, map_len 2, obs_buf 3, act_buf 4, rew_buf 5, hid_buf 6, 
+              td_errors 7, done 8, size 9, comm_mask 10, arrival_rate 11
         '''
         # Track statistics from all actors (removed the >= 12 restriction)
         stat_key = (data[1], data[2])
-        
-        # Create entry if it doesn't exist
-        if stat_key not in self.stat_dict:
-            self.stat_dict[stat_key] = []
-        
-        self.stat_dict[stat_key].append(data[8])
-        if len(self.stat_dict[stat_key]) == 201:
-            self.stat_dict[stat_key].pop(0)
+
+        if stat_key in self.stat_dict:
+            # Track success rate
+            self.stat_dict[stat_key].append(data[8])
+            if len(self.stat_dict[stat_key]) == 201:
+                self.stat_dict[stat_key].pop(0)
+            
+            # Track episode length
+            if stat_key not in self.episode_length_dict:
+                self.episode_length_dict[stat_key] = []
+            self.episode_length_dict[stat_key].append(data[9])
+            if len(self.episode_length_dict[stat_key]) == 201:
+                self.episode_length_dict[stat_key].pop(0)
+            
+            # Track arrival rate
+            if stat_key not in self.arrival_rate_dict:
+                self.arrival_rate_dict[stat_key] = []
+            self.arrival_rate_dict[stat_key].append(data[11])
+            if len(self.arrival_rate_dict[stat_key]) == 201:
+                self.arrival_rate_dict[stat_key].pop(0)
 
         with self.lock:
 
@@ -256,11 +271,15 @@ class GlobalBuffer:
                 add_agent_key = (key[0]+1, key[1]) 
                 if add_agent_key[0] <= configs.max_num_agents and add_agent_key not in self.stat_dict:
                     self.stat_dict[add_agent_key] = []
+                    self.episode_length_dict[add_agent_key] = []
+                    self.arrival_rate_dict[add_agent_key] = []
                 
                 if key[1] < configs.max_map_length:
                     add_map_key = (key[0], key[1]+5) 
                     if add_map_key not in self.stat_dict:
                         self.stat_dict[add_map_key] = []
+                        self.episode_length_dict[add_map_key] = []
+                        self.arrival_rate_dict[add_map_key] = []
                 
         self.env_settings_set = ray.put(list(self.stat_dict.keys()))
 
@@ -274,6 +293,45 @@ class GlobalBuffer:
     
     def get_env_settings(self):
         return self.env_settings_set
+
+    def get_wandb_stats(self):
+        """Return aggregated stats for wandb logging"""
+        stats = {
+            'buffer_size': self.size,
+            'buffer_update_speed': self.counter,  # Will be divided by interval in train.py
+        }
+        
+        # Aggregate stats across all env settings
+        total_success = 0
+        total_episodes = 0
+        total_episode_length = 0
+        total_length_episodes = 0
+        total_arrival_rate = 0
+        total_arrival_episodes = 0
+        
+        for key, val in self.stat_dict.items():
+            if len(val) > 0:
+                total_success += sum(val)
+                total_episodes += len(val)
+        
+        for key, val in self.episode_length_dict.items():
+            if len(val) > 0:
+                total_episode_length += sum(val)
+                total_length_episodes += len(val)
+        
+        for key, val in self.arrival_rate_dict.items():
+            if len(val) > 0:
+                total_arrival_rate += sum(val)
+                total_arrival_episodes += len(val)
+        
+        if total_episodes > 0:
+            stats['success_rate'] = total_success / total_episodes
+        if total_length_episodes > 0:
+            stats['avg_episode_length'] = total_episode_length / total_length_episodes
+        if total_arrival_episodes > 0:
+            stats['avg_arrival_rate'] = total_arrival_rate / total_arrival_episodes
+        
+        return stats
 
     def check_done(self):
 
@@ -332,52 +390,51 @@ class Learner:
 
     def train(self):
         scaler = GradScaler()
-
+        i = 0
         while not ray.get(self.buffer.check_done.remote()) and self.counter < configs.training_times:
+            
+            data_id = ray.get(self.buffer.get_data.remote())
+            data = ray.get(data_id)
 
-            for i in range(1, 10001):
+            b_obs, b_action, b_reward, b_done, b_steps, b_seq_len, b_hidden, b_comm_mask, idxes, weights, old_ptr = data
+            b_obs, b_action, b_reward = b_obs.to(configs.device), b_action.to(configs.device), b_reward.to(configs.device)
+            b_done, b_steps, weights = b_done.to(configs.device), b_steps.to(configs.device), weights.to(configs.device)
+            b_hidden = b_hidden.to(configs.device)
+            b_comm_mask = b_comm_mask.to(configs.device)
 
-                data_id = ray.get(self.buffer.get_data.remote())
-                data = ray.get(data_id)
-    
-                b_obs, b_action, b_reward, b_done, b_steps, b_seq_len, b_hidden, b_comm_mask, idxes, weights, old_ptr = data
-                b_obs, b_action, b_reward = b_obs.to(configs.device), b_action.to(configs.device), b_reward.to(configs.device)
-                b_done, b_steps, weights = b_done.to(configs.device), b_steps.to(configs.device), weights.to(configs.device)
-                b_hidden = b_hidden.to(configs.device)
-                b_comm_mask = b_comm_mask.to(configs.device)
+            b_next_seq_len = [ (seq_len+forward_steps).item() for seq_len, forward_steps in zip(b_seq_len, b_steps) ]
+            b_next_seq_len = torch.LongTensor(b_next_seq_len)
 
-                b_next_seq_len = [ (seq_len+forward_steps).item() for seq_len, forward_steps in zip(b_seq_len, b_steps) ]
-                b_next_seq_len = torch.LongTensor(b_next_seq_len)
+            with torch.no_grad():
+                b_q_ = (1 - b_done) * self.tar_model(b_obs, b_next_seq_len, b_hidden, b_comm_mask).max(1, keepdim=True)[0]
 
-                with torch.no_grad():
-                    b_q_ = (1 - b_done) * self.tar_model(b_obs, b_next_seq_len, b_hidden, b_comm_mask).max(1, keepdim=True)[0]
+            b_q = self.model(b_obs[:, :-configs.forward_steps], b_seq_len, b_hidden, b_comm_mask[:, :-configs.forward_steps]).gather(1, b_action)
 
-                b_q = self.model(b_obs[:, :-configs.forward_steps], b_seq_len, b_hidden, b_comm_mask[:, :-configs.forward_steps]).gather(1, b_action)
+            td_error = (b_q - (b_reward + (0.99 ** b_steps) * b_q_))
 
-                td_error = (b_q - (b_reward + (0.99 ** b_steps) * b_q_))
+            priorities = td_error.detach().squeeze().abs().clamp(1e-4).cpu().numpy()
 
-                priorities = td_error.detach().squeeze().abs().clamp(1e-4).cpu().numpy()
+            loss = (weights * self.huber_loss(td_error)).mean()
+            self.loss += loss.item()
 
-                loss = (weights * self.huber_loss(td_error)).mean()
-                self.loss += loss.item()
+            self.optimizer.zero_grad()
+            scaler.scale(loss).backward()
 
-                self.optimizer.zero_grad()
-                scaler.scale(loss).backward()
+            scaler.unscale_(self.optimizer)
+            nn.utils.clip_grad_norm_(self.model.parameters(), 40)
 
-                scaler.unscale_(self.optimizer)
-                nn.utils.clip_grad_norm_(self.model.parameters(), 40)
+            scaler.step(self.optimizer)
+            scaler.update()
 
-                scaler.step(self.optimizer)
-                scaler.update()
- 
-                self.scheduler.step()
+            self.scheduler.step()
 
-                # store new weights in shared memory
-                if i % 5  == 0:
-                    self.store_weights()
+            # store new weights in shared memory
+            if i % 5  == 0:
+                self.store_weights()
 
-                self.buffer.update_priorities.remote(idxes, priorities, old_ptr)
+            self.buffer.update_priorities.remote(idxes, priorities, old_ptr)
 
+            self.counter += 1
                 self.counter += 1
                 
                 # Record individual loss value at every update (no averaging)
@@ -388,12 +445,17 @@ class Learner:
                 if self.counter % 1000 == 0:
                     self.plot_loss()
 
-                # update target net, save model
-                if i % configs.target_network_update_freq == 0:
-                    self.tar_model.load_state_dict(self.model.state_dict())
-                
-                if i % configs.save_interval == 0:
-                    torch.save(self.model.state_dict(), os.path.join(configs.save_path, '{}.pth'.format(self.counter)))
+            # update target net, save model
+            if i % configs.target_network_update_freq == 0:
+                self.tar_model.load_state_dict(self.model.state_dict())
+            
+            if i % configs.save_interval == 0:
+                torch.save(self.model.state_dict(), os.path.join(configs.save_path, '{}.pth'.format(self.counter)))
+
+            i += 1
+
+            if i > 10000:
+                i = 0
 
         self.done = True
 
@@ -469,6 +531,22 @@ class Learner:
         self.loss = 0
         return self.done
 
+    def get_wandb_stats(self, interval: int):
+        """Return stats for wandb logging"""
+        stats = {
+            'updates': self.counter,
+            'update_speed': (self.counter - self.last_counter) / interval if interval > 0 else 0,
+            'done': self.done,
+        }
+        
+        if self.counter != self.last_counter:
+            stats['loss'] = self.loss / (self.counter - self.last_counter)
+        
+        # Get current learning rate
+        stats['learning_rate'] = self.scheduler.get_last_lr()[0]
+        
+        return stats
+
 
 @ray.remote(num_cpus=configs.ray_cpus_per_actor)
 class Actor:
@@ -499,7 +577,7 @@ class Actor:
                 # Note: only one agent do random action in order to keep the environment stable
                 actions[0] = np.random.randint(0, 5)
             # take action in env
-            (next_obs, next_pos), rewards, done, _ = self.env.step(actions)
+            (next_obs, next_pos), rewards, done, info = self.env.step(actions)
             # return data and update observation
             local_buffer.add(q_val[0], actions[0], rewards[0], next_obs, hidden, comm_mask)
 
@@ -508,10 +586,10 @@ class Actor:
             else:
                 # finish and send buffer
                 if done:
-                    data = local_buffer.finish()
+                    data = local_buffer.finish()  # arrival_rate=1.0 by default when done
                 else:
                     _, q_val, hidden, comm_mask = self.model.step(torch.from_numpy(next_obs.astype(np.float32)), torch.from_numpy(next_pos.astype(np.float32)))
-                    data = local_buffer.finish(q_val[0], comm_mask)
+                    data = local_buffer.finish(q_val[0], comm_mask, arrival_rate=info['arrival_rate'])
 
                 self.global_buffer.add.remote(data)
                 done = False

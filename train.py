@@ -37,19 +37,53 @@ def main(num_actors=configs.num_actors, log_interval=configs.log_interval):
         ray.get(learner.stats.remote(5))
         ray.get(buffer.stats.remote(5))
 
-    print("start training")
-    buffer.run.remote()
-    learner.run.remote()
+        print(f'Start training for {map_type}')
+        buffer.run.remote()
+        learner.run.remote()
+        
+        done = False
+        step_count = 0
+        while not done:
+            time.sleep(log_interval)
+            
+            # Get stats for console output (existing behavior)
+            done = ray.get(learner.stats.remote(log_interval))
+            ray.get(buffer.stats.remote(log_interval))
+            
+            # Get stats for wandb logging
+            learner_stats = ray.get(learner.get_wandb_stats.remote(log_interval))
+            buffer_stats = ray.get(buffer.get_wandb_stats.remote())
+            
+            # Combine stats and add map type context
+            wandb_metrics = {
+                'map_type': map_type,
+                # Learner metrics
+                'loss': learner_stats.get('loss', 0),
+                'updates': learner_stats.get('updates', 0),
+                'update_speed': learner_stats.get('update_speed', 0),
+                'learning_rate': learner_stats.get('learning_rate', 0),
+                # Buffer metrics
+                'buffer_size': buffer_stats.get('buffer_size', 0),
+                'success_rate': buffer_stats.get('success_rate', 0),
+                'avg_episode_length': buffer_stats.get('avg_episode_length', 0),
+                'avg_arrival_rate': buffer_stats.get('avg_arrival_rate', 0),
+            }
+            
+            # Log to wandb
+            wandb.log(wandb_metrics, step=step_count)
+            step_count += 1
+            
+            print()
+        
+        print(f'\nTraining completed for {map_type}')
+        
+    finally:
+        # Shutdown Ray to clean up resources
+        ray.shutdown()
 
-    done = False
-    while not done:
-        time.sleep(log_interval)
-        done = ray.get(learner.stats.remote(log_interval))
-        ray.get(buffer.stats.remote(log_interval))
-        print()
 
-
-if __name__ == "__main__":
+def main():
+    """Train models for all map types"""
     wandb.init(
         entity="sigmamql",
         project="SIGMA-MQL",

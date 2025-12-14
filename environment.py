@@ -420,7 +420,11 @@ class Environment:
         else:
             done = False
 
-        info = {'step': self.steps-1}
+        # Calculate arrival rate (fraction of agents at their goals)
+        agents_at_goal = np.all(self.agents_pos == self.goals_pos, axis=1)
+        arrival_rate = agents_at_goal.sum() / self.num_agents
+        
+        info = {'step': self.steps-1, 'arrival_rate': arrival_rate}
 
         # make sure no overlapping agents
         if np.unique(self.agents_pos, axis=0).shape[0] < self.num_agents:

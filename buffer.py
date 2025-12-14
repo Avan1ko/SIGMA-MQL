@@ -58,7 +58,7 @@ class SumTree:
 
 class LocalBuffer:
     __slots__ = ('actor_id', 'map_len', 'num_agents', 'obs_buf', 'act_buf', 'rew_buf', 'hid_buf', 
-                'comm_mask_buf', 'q_buf', 'capacity', 'size', 'done')
+                'comm_mask_buf', 'q_buf', 'capacity', 'size', 'done', 'final_arrival_rate')
     def __init__(self, actor_id: int, num_agents: int, map_len: int, init_obs: np.ndarray,
                 capacity: int = configs.max_episode_length, 
                 obs_shape=configs.obs_shape, hidden_dim=configs.hidden_dim, action_dim=configs.action_dim):
@@ -96,12 +96,14 @@ class LocalBuffer:
 
         self.size += 1
 
-    def finish(self, last_q_val=None, last_comm_mask=None):
+    def finish(self, last_q_val=None, last_comm_mask=None, arrival_rate=1.0):
         # last q value is None if done
         if last_q_val is None:
             done = True
+            self.final_arrival_rate = 1.0  # All agents reached goals
         else:
             done = False
+            self.final_arrival_rate = arrival_rate
             self.q_buf[self.size] = last_q_val
             self.comm_mask_buf[self.size] = last_comm_mask
         
@@ -120,4 +122,7 @@ class LocalBuffer:
         q_val = self.q_buf[np.arange(self.size), self.act_buf]
         td_errors[:self.size] = np.abs(reward-q_val).clip(1e-4)
 
-        return  self.actor_id, self.num_agents, self.map_len, self.obs_buf, self.act_buf, self.rew_buf, self.hid_buf, td_errors, done, self.size, self.comm_mask_buf
+        # Return tuple: actor_id 0, num_agents 1, map_len 2, obs_buf 3, act_buf 4, rew_buf 5, hid_buf 6, 
+        #               td_errors 7, done 8, size 9, comm_mask 10, arrival_rate 11
+        return (self.actor_id, self.num_agents, self.map_len, self.obs_buf, self.act_buf, self.rew_buf, 
+                self.hid_buf, td_errors, done, self.size, self.comm_mask_buf, self.final_arrival_rate)
