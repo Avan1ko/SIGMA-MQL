@@ -98,18 +98,24 @@ reward_fn = dict(move=-0.075,
 obs_shape = (6, 2*obs_radius+1, 2*obs_radius+1)
 action_dim = 5
 
-# Basic training settings
-num_actors = 20  # Desired number of actors (will be auto-adjusted based on available CPUs)
-log_interval = 10
-training_times = 50000  # Max weight updates per training run
-save_interval = 2000
-gamma = 0.99
-batch_size = 192
-learning_starts = 10000  # Reduced from 50k for faster startup
-target_network_update_freq = 2000
 
-# Episode settings
-max_episode_length = 256
+
+############################################################
+####################         DQN        ####################
+############################################################
+
+# basic training setting
+map_type = 'random'
+num_actors = 20
+log_interval = 10
+training_times = 10000
+save_interval=1000
+gamma=0.99
+batch_size=256
+learning_starts=25000
+target_network_update_freq=1000
+save_path=f'./models/{map_type}'
+max_episode_length = 512
 seq_len = 16
 load_model = False
 load_path = './models/save_model/model_house/84000_house.pth'
@@ -132,11 +138,11 @@ episode_capacity = 2048
 prioritized_replay_alpha=0.6
 prioritized_replay_beta=0.4
 
-# Fixed training settings (for curriculum learning, set max_num_agents and max_map_length higher)
-max_num_agents = 3  # Keep same for fixed training (increase for curriculum)
-max_map_length = 15  # Keep same for fixed training (increase for curriculum)
-pass_rate = 0.9  # Only used if curriculum learning enabled
-
+# curriculum learning
+init_env_settings = (3, 10)
+max_num_agents = 3
+max_map_length = 20
+pass_rate = 0.9
 # dqn network setting
 cnn_channel = 128
 hidden_dim = 256
@@ -176,8 +182,6 @@ save_path = './models'
 test_seed = 0
 num_test_cases = 200
 
-# Test settings: (map_length, num_agents, density)
-# Default test settings for evaluation
 test_env_settings = ((40, 4, 0.3), (40, 8, 0.3), (40, 16, 0.3), (40, 32, 0.3), (40, 64, 0.3), (40, 128, 0.3),
                     (80, 4, 0.3), (80, 8, 0.3), (80, 16, 0.3), (80, 32, 0.3), (80, 64, 0.3), (80, 128, 0.3))
 

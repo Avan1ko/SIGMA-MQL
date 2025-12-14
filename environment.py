@@ -8,7 +8,7 @@ import configs
 from map_tools.map_generator import MapGenerator, MapType
 
 
-action_list = np.array([[0, 0],[-1, 0],[1, 0],[0, -1],[0, 1]], dtype=np.int32)
+action_list = np.array([[0, 0],[-1, 0],[1, 0],[0, -1],[0, 1]], dtype=np.int_)
 
 color_map = np.array([[255, 255, 255],   # white
                     [190, 190, 190],   # gray
@@ -22,7 +22,7 @@ def map_partition(map):
     partitioning map into independent partitions 
     '''
 
-    empty_pos = np.argwhere(map==0).astype(np.int32).tolist()
+    empty_pos = np.argwhere(map==0).astype(np.int_).tolist()
 
     empty_pos = [ tuple(pos) for pos in empty_pos ]
 
@@ -89,43 +89,26 @@ class Environment:
             self.fix_density = True
             self.obstacle_density = fix_density
 
-        # Create unified map generator once (before first use)
-        self.map_generator = MapGenerator(min_size=self.map_size[0], max_size=self.map_size[0])
-
-        # Map string to MapType enum (shared mapping)
-        self.map_type_map = {
-            'house': MapType.HOUSE,
-            'maze': MapType.MAZE,
-            'warehouse': MapType.WAREHOUSE,
-            'tunnels': MapType.TUNNELS,
-            'random': MapType.RANDOM
-        }
-
-        # Generate map using unified MapGenerator
-        # Use train_map_type if in training mode (curriculum=True), otherwise use test_scenario
-        map_type_key = configs.train_map_type if self.curriculum else configs.test_scenario
-
-        if map_type_key in self.map_type_map:
-            self.map = self.map_generator.generate(self.map_type_map[map_type_key], size=self.map_size[0])
+        if configs.map_type == 'house':
+            # Generate the map using house_generator
+            self.map, _ = house_generator(env_size=self.map_size[0])
         else:
-            raise ValueError(f"Invalid map type '{map_type_key}'. Must be one of {list(self.map_type_map.keys())}")
-
+            self.map = np.random.choice(2, self.map_size, p=[1-self.obstacle_density, self.obstacle_density]).astype(np.int_)
+        
         partition_list = map_partition(self.map)
         partition_list = [ partition for partition in partition_list if len(partition) >= 2 ]
 
         while len(partition_list) == 0:
-            # Regenerate map using unified MapGenerator
-            map_type_key = configs.train_map_type if self.curriculum else configs.test_scenario
-
-            if map_type_key in self.map_type_map:
-                self.map = self.map_generator.generate(self.map_type_map[map_type_key], size=self.map_size[0])
+            if configs.map_type == 'house':
+            # Generate the map using house_generator
+                self.map, _ = house_generator(env_size=self.map_size[0])
             else:
-                raise ValueError(f"Invalid map type '{map_type_key}'. Must be one of {list(self.map_type_map.keys())}")
+                self.map = np.random.choice(2, self.map_size, p=[1-self.obstacle_density, self.obstacle_density]).astype(np.int_)
             partition_list = map_partition(self.map)
             partition_list = [ partition for partition in partition_list if len(partition) >= 2 ]
         
-        self.agents_pos = np.empty((self.num_agents, 2), dtype=np.int32)
-        self.goals_pos = np.empty((self.num_agents, 2), dtype=np.int32)
+        self.agents_pos = np.empty((self.num_agents, 2), dtype=np.int_)
+        self.goals_pos = np.empty((self.num_agents, 2), dtype=np.int_)
 
         pos_num = sum([ len(partition) for partition in partition_list ])
         
@@ -143,11 +126,11 @@ class Environment:
 
             pos = random.choice(partition_list[partition_idx])
             partition_list[partition_idx].remove(pos)
-            self.agents_pos[i] = np.asarray(pos, dtype=np.int32)
+            self.agents_pos[i] = np.asarray(pos, dtype=np.int_)
 
             pos = random.choice(partition_list[partition_idx])
             partition_list[partition_idx].remove(pos)
-            self.goals_pos[i] = np.asarray(pos, dtype=np.int32)
+            self.goals_pos[i] = np.asarray(pos, dtype=np.int_)
 
             partition_list = [partition for partition in partition_list if len(partition) >= 2]
             pos_num = sum([ len(partition) for partition in partition_list ])
@@ -177,36 +160,27 @@ class Environment:
 
         if not self.fix_density:
             self.obstacle_density = np.random.triangular(0, 0.33, 0.5)
-
-        # Update map generator size if map size changed
-        self.map_generator.min_size = self.map_size[0]
-        self.map_generator.max_size = self.map_size[0]
-
-        # Generate map using unified MapGenerator
-        # Use train_map_type if in training mode (curriculum=True), otherwise use test_scenario
-        map_type_key = configs.train_map_type if self.curriculum else configs.test_scenario
-
-        if map_type_key in self.map_type_map:
-            self.map = self.map_generator.generate(self.map_type_map[map_type_key], size=self.map_size[0])
+        
+        if configs.map_type == 'house':
+            # Generate the map using house_generator
+            self.map, _ = house_generator(env_size=self.map_size[0])
         else:
-            raise ValueError(f"Invalid map type '{map_type_key}'. Must be one of {list(self.map_type_map.keys())}")
+            self.map = np.random.choice(2, self.map_size, p=[1-self.obstacle_density, self.obstacle_density]).astype(np.int_)
 
         partition_list = map_partition(self.map)
         partition_list = [ partition for partition in partition_list if len(partition) >= 2 ]
 
         while len(partition_list) == 0:
-            # Regenerate map using unified MapGenerator
-            map_type_key = configs.train_map_type if self.curriculum else configs.test_scenario
-
-            if map_type_key in self.map_type_map:
-                self.map = self.map_generator.generate(self.map_type_map[map_type_key], size=self.map_size[0])
+            if configs.map_type == 'house':
+                # Generate the map using house_generator
+                self.map, _ = house_generator(env_size=self.map_size[0])
             else:
-                raise ValueError(f"Invalid map type '{map_type_key}'. Must be one of {list(self.map_type_map.keys())}")
+                self.map = np.random.choice(2, self.map_size, p=[1-self.obstacle_density, self.obstacle_density]).astype(np.int_)
             partition_list = map_partition(self.map)
             partition_list = [ partition for partition in partition_list if len(partition) >= 2 ]
         
-        self.agents_pos = np.empty((self.num_agents, 2), dtype=np.int32)
-        self.goals_pos = np.empty((self.num_agents, 2), dtype=np.int32)
+        self.agents_pos = np.empty((self.num_agents, 2), dtype=np.int_)
+        self.goals_pos = np.empty((self.num_agents, 2), dtype=np.int_)
 
         pos_num = sum([ len(partition) for partition in partition_list ])
         
@@ -223,11 +197,11 @@ class Environment:
 
             pos = random.choice(partition_list[partition_idx])
             partition_list[partition_idx].remove(pos)
-            self.agents_pos[i] = np.asarray(pos, dtype=np.int32)
+            self.agents_pos[i] = np.asarray(pos, dtype=np.int_)
 
             pos = random.choice(partition_list[partition_idx])
             partition_list[partition_idx].remove(pos)
-            self.goals_pos[i] = np.asarray(pos, dtype=np.int32)
+            self.goals_pos[i] = np.asarray(pos, dtype=np.int_)
 
             partition_list = [ partition for partition in partition_list if len(partition) >= 2 ]
             pos_num = sum([ len(partition) for partition in partition_list ])
@@ -257,7 +231,7 @@ class Environment:
         self.last_actions = np.zeros((self.num_agents, 5, 2*self.obs_radius+1, 2*self.obs_radius+1), dtype=np.bool_)
 
     def get_heuri_map(self):
-        dist_map = np.ones((self.num_agents, *self.map_size), dtype=np.int32) * 2147483647
+        dist_map = np.ones((self.num_agents, *self.map_size), dtype=np.int_) * 2147483647
         for i in range(self.num_agents):
             open_list = list()
             x, y = tuple(self.goals_pos[i])

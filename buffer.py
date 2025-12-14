@@ -29,7 +29,7 @@ class SumTree:
 
         prefixsums = np.arange(0, p_sum, interval, dtype=np.float64) + np.random.uniform(0, interval, batch_size)
 
-        idxes = np.zeros(batch_size, dtype=np.int32)
+        idxes = np.zeros(batch_size, dtype=np.int_)
         for _ in range(self.layer-1):
             nodes = self.tree[idxes*2+1]
             idxes = np.where(prefixsums<nodes, idxes*2+1, idxes*2+2)
