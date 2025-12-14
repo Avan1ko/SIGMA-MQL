@@ -101,7 +101,7 @@ action_dim = 5
 # Basic training settings
 num_actors = 20  # Desired number of actors (will be auto-adjusted based on available CPUs)
 log_interval = 10
-training_times = 50000  # Max weight updates per training run
+training_times = 100  # Max weight updates per training run
 save_interval = 2000
 gamma = 0.99
 batch_size = 192
